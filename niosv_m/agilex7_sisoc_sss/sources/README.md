@@ -47,15 +47,13 @@ quartus_py ./scripts/build_sof.py
 ```
 - The quartus tool will compile the design and generate the output files
 
-c. Creating the bsp, build software sources and download elf
-- To create software app, run the following commands in the terminal:
-
 - Clean the app build project before regenerating elf
 
 c. IP Address configuration
     
-    - Please refer the below web-link for configuring the IP Address
-        https://www.intel.com/content/www/us/en/docs/programmable/726952/22-4-22-4-0/optional-configuration.html
+- Please refer the below web-link for configuring the IP Address
+
+https://www.intel.com/content/www/us/en/docs/programmable/726952/22-4-22-4-0/optional-configuration.html
 
 d. Creating the bsp, build software sources and download elf
 - To create software app with HAL OS, run the following commands in the terminal:
