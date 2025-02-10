@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="reset_bridge_0"
+     kind="altera_reset_bridge"
+     version="ALL"
+     description=""
+     board="Intel Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
+     preset_category="Presets">
+   <parameter name="NUM_RESET_OUTPUTS" value="1" />
+   <parameter name="ACTIVE_LOW_RESET" value="1" />
+   <parameter name="SYNCHRONOUS_EDGES" value="deassert" />
+   <parameter name="USE_RESET_REQUEST" value="0" />
+   <parameter name="SYNC_RESET" value="1" />
+  </preset>
+ </presets>
+</ip>

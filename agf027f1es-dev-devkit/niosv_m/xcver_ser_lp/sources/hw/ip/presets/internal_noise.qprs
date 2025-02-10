@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="internal_noise"
+     kind="altera_avalon_pio"
+     version="ALL"
+     description=""
+     board="Intel Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
+     preset_category="Presets">
+   <parameter name="bitModifyingOutReg" value="false" />
+   <parameter name="simDrivenValue" value="0" />
+   <parameter name="irqType" value="LEVEL" />
+   <parameter name="edgeType" value="RISING" />
+   <parameter name="width" value="32" />
+   <parameter name="generateIRQ" value="false" />
+   <parameter name="bitClearingEdgeCapReg" value="false" />
+   <parameter name="captureEdge" value="false" />
+   <parameter name="resetValue" value="0" />
+   <parameter name="direction" value="Output" />
+   <parameter name="simDoTestBenchWiring" value="false" />
+  </preset>
+ </presets>
+</ip>

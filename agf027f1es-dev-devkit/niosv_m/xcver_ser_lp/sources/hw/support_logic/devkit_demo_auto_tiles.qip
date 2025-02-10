@@ -1,0 +1,37 @@
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/maib_filters.sv"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/f_tile_soft_reset_ctlr_ip_v1.sv"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/f_tile_soft_reset_ctlr_if_mux_v1.sv"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_dec8_t1.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/alt_jtagsr_adapt.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_lut6.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_mlab.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_mlab20_a1r1w1.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_sync20_m.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/nios_jtagsr.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/nios_nios2_smg.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/nios_rst_ctrl.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/altera_std_synchronizer_nocut.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_gdr_rst_i_synchronizers.v"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/intc_gdr_rst.sv"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/ftile_reset.sv"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name HEX_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/nios2_smg_regfile.hex"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name HEX_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/rst_ctrl_dram.hex"] -tag quartus_tlg
+set_global_assignment -library "f_tile_soft_reset_ctlr_ip_v1" -name HEX_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/rst_ctrl_iram.hex"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm1_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm1_ai_arbiter.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm1_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm1_req_gate.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm1_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm_act_select.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm1_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm1_integ_split.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm1_ai_arbiter" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/altera_std_synchronizer_nocut.v"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm2_ai_arbiter.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm2_req_gate.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm_act_select.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_gavmm_page_upd.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/ctf_avmm2_integ_split.sv"] -tag quartus_tlg
+set_global_assignment -library "ctf_avmm2_ai_arbiter" -name VERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftile_avmm_arb/altera_std_synchronizer_nocut.v"] -tag quartus_tlg
+set_global_assignment -library "devkit_demo_auto_tiles" -name SYSTEMVERILOG_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftileb_ag_v0.sv"] -tag quartus_tlg
+set_global_assignment -library "devkit_demo_auto_tiles" -name MIF_FILE [file join $::quartus(qip_path) "devkit_demo__z1577b_x5_y166_n0.mif"] -tag quartus_tlg
+set_instance_assignment -entity "f_tile_soft_reset_ctlr_ip_v1" -library "f_tile_soft_reset_ctlr_ip_v1" -name SDC_ENTITY_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/f_tile_soft_reset_ctlr_ip_v1/f_tile_soft_reset_ctlr_ip_v1.sdc"] -no_sdc_promotion -tag quartus_tlg
+set_global_assignment -library "devkit_demo_auto_tiles" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "devkit_demo_auto_tiles.sv"] -tag quartus_tlg
+set_global_assignment -name SECONDARY_TOP_LEVEL_ENTITY devkit_demo_auto_tiles -tag quartus_tlg
+set_instance_assignment -entity "ftileb_ag_v0" -library "devkit_demo_auto_tiles" -name SDC_ENTITY_FILE [file join $::quartus(quartus_rootpath) "libraries/megafunctions/ftileb_ag_v0.sdc"] -no_sdc_promotion -tag quartus_tlg
+set_location_assignment -to "devkit_demo_auto_tiles|z1577b_x5_y166_n0|z1577b" Z1577B_X5_Y166_N0

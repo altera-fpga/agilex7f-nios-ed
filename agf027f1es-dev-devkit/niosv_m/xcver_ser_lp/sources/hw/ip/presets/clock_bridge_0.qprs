@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="clock_bridge_0"
+     kind="altera_clock_bridge"
+     version="ALL"
+     description=""
+     board="Intel Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
+     preset_category="Presets">
+   <parameter name="EXPLICIT_CLOCK_RATE" value="125000000" />
+   <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+  </preset>
+ </presets>
+</ip>
