@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="phy_reg_set"
+     kind="phy_reg_set"
+     version="ALL"
+     description=""
+     board="Intel Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
+     preset_category="Presets">
+   <parameter name="NPHYS" value="2" />
+   <parameter name="NAVMM_PER_PHY" value="4" />
+  </preset>
+ </presets>
+</ip>
