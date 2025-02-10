@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="sys_clk_timer"
+     kind="altera_avalon_timer"
+     version="ALL"
+     description=""
+     board="Intel Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
+     preset_category="Presets">
+   <parameter name="timeoutPulseOutput" value="false" />
+   <parameter name="period" value="1" />
+   <parameter name="fixedPeriod" value="false" />
+   <parameter name="counterSize" value="32" />
+   <parameter name="periodUnits" value="MSEC" />
+   <parameter name="alwaysRun" value="false" />
+   <parameter name="watchdogPulse" value="2" />
+   <parameter name="snapshot" value="true" />
+   <parameter name="resetOutput" value="false" />
+  </preset>
+ </presets>
+</ip>
