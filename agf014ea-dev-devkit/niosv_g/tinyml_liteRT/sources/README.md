@@ -14,7 +14,7 @@ This design demonstrates the TinyML application using LiteRT for microcontroller
 * **Source**: Github
 * **Design Support**: CTH
 * **Family**: Agilex 7
-* **Quartus Version**: 25.1.0 Pro
+* **Quartus Version**: 25.1.0
 * **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
 * **Device Part**: AGFB014R24B2E2V
 * **Design Package**: agilex7_niosv_g_tinyml_liteRT.zip
@@ -25,7 +25,7 @@ This design demonstrates the TinyML application using LiteRT for microcontroller
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png
 
 # Getting Started
 
