@@ -25,7 +25,7 @@ This design demonstrates the TinyML application using LiteRT for microcontroller
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md
 
 # Getting Started
 
