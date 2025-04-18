@@ -19,7 +19,7 @@
 ### Nios® V/g TinyML LiteRT Design Archiecture
  This example design includes a Nios® V processor connected to the On Chip RAM-II, JTAG UART IP and System ID peripheral core. The objective of the design is to accomplish data transfer between the processor and soft IP peripherals.
  
- ![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
+ ![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
 
 #### Nios® V/g Processor
 - General-Purpose Processor- High Performance (For interrupt driven baremetal and RTOS code)
