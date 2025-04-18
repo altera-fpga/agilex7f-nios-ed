@@ -7,7 +7,7 @@
  This example design is about applying the floating point unit in Nios V/g processor. The example application evaluates the floating point rate of Nios V/g processor by using Linpack benchmark.
  More information on the Linpack Benchmark can be found here- https://top500.org/project/linpack/
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.0/agf014eb-si-devkit/niosv_g/fpu_test/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014eb-si-devkit/niosv_g/fpu_test/img/block_diagram.png)
 
 
 ## Project Details
@@ -19,10 +19,10 @@
 - **Quartus Version**: 25.1.0
 - **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
 - **Device Part**: AGFB014R24B2E2V
-- **Design Package**: agilex7_fpu_test.zip
-- **Category**: Nios V/g feature
-- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1/agf014eb-si-devkit/niosv_g/fpu_test/
-- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/tag/25.1.0-v1.0/agilex7_fpu_test.zip
+- **Design Package**: agilex7_niosv_g_fpu_test.zip
+- **Category**: FPU
+- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014eb-si-devkit/niosv_g/fpu_test/
+- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.1.0-v1.0/agilex7_niosv_g_fpu_test.zip
 
 ## Documentation
 
