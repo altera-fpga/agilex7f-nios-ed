@@ -6,7 +6,7 @@ Nios® V/g Processor-based TinyML LiteRT example design on the Agilex® 7 FPGA.
 
 This design demonstrates the TinyML application using LiteRT for microcontrollers software with Nios® V/g processor in the Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA. 
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
 
 ## Project Details
 
