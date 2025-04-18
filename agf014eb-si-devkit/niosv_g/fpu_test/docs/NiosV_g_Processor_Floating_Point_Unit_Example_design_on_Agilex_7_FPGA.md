@@ -20,7 +20,8 @@ This example design is about applying the floating point unit in Nios V/g proces
  This example design includes a Nios® V/g processor connected to the On Chip RAM-II, JTAG UART IP and System ID peripheral core. The objective of the design is to accomplish data transfer between the processor and soft IP peripherals for showcasing the FPU feature of the Nios V/g IP core.
  The application demonstrates the Floating Point Unit (FPU) feature of Nios V/g IP core using Linpack Benchmark- http://www.netlib.org/utk/people/JackDongarra/faq-linpack.html
  
- ![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.0/agf014eb-si-devkit/niosv_g/fpu_test/img/block_diagram.png)
+ ![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.0/agf014eb-si-devkit/niosv_g/fpu_test/img/block_diagram.png)
+ 
 
 #### Nios® V/g Processor 
 - Balanced (For interrupt driven baremetal and RTOS code)
