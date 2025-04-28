@@ -2,6 +2,15 @@
 
 This repository contains the Nios V Example designs based on different Altera Agilex™ FPGA Development Kits.
 
+**25.1 Release Notes**
+
+*1. [TinyML Design and Application on Nios V/g core](agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md)*
+
+*2. [Floating Point Unit Design and Application on Nios V/g core](agf014eb-si-devkit/niosv_g/fpu_test/docs/NiosV_g_Processor_Floating_Point_Unit_Example_design_on_Agilex_7_FPGA.md)*
+
+*3. [Ashling VSCode Extension](https://www.intel.com/content/www/us/en/docs/programmable/730783/25-1/ashling-visual-studio-code-extension.html)*
+
+
 The following table contains the list of Acronyms that the user may come across in the design details
 
 | Acronym | Expansion |
@@ -15,6 +24,8 @@ The following table contains the list of Acronyms that the user may come across 
 | SSS | Simple Socket Server |
 | CI | Custom Instrcution |
 | CRC | Cyclic Redundancy Check |
+| FPU | Floating Point Unit |
+| VS | Visual Studio |
 
 There are three variants of the NiosV core:
     
