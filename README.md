@@ -2,7 +2,7 @@
 
 This repository contains the Nios V Example designs based on different Altera Agilex™ FPGA Development Kits.
 
-**25.1 Release Notes**
+**25.1.0 New Releases**
 
 *1. [TinyML Design and Application on Nios V/g core](agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md)*
 
