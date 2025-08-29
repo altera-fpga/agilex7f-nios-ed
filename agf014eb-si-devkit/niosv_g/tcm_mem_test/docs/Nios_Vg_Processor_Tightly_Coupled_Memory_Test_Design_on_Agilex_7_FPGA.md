@@ -20,7 +20,7 @@ Nios® V/g Processor-based TCM example design on the Agilex® 7 FPGA.
 
 This example design is about how to use tightly coupled memory in Nios® V/g processor. The example application measures the memory access speed of different memories connected to the processor, such as TCM, on-chip memory and external memory interface (EMIF). In addition to that, the application showcases the speedup between cached and un-cached memories.
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014eb-si-devkit/niosv_g/tcm_mem_test/img/agilex7_tcm.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014eb-si-devkit/niosv_g/tcm_mem_test/img/niosv_tcm.png)
 
 #### Nios® V/g Processor 
 - Balanced (For interrupt driven baremetal and RTOS code)

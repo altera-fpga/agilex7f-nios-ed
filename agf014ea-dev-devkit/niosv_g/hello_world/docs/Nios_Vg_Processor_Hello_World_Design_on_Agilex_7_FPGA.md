@@ -21,7 +21,7 @@ Nios® V/g Processor-based Hello World example design on the Agilex® 7 FPGA.
 
 Nios® V/g Processor-based Helloworld example design on the Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA. 
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/hello_world/img/hello_world.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_g/hello_world/img/hello_world.png)
 
 #### Nios® V/g Processor
 - General-Purpose Processor- High Performance (For interrupt driven baremetal and RTOS code)

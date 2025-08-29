@@ -22,7 +22,7 @@ A Processing Engine (PE) that performs the Cyclic Redundancy Check (CRC) algorit
 
 The current version of the Nios® V/g processor custom instruction interface supports operations up-to 32-Bit. 
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_crc/img/agilex7_ci_crc.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_crc/img/niosv_ci_example.png)
 
 #### Nios® V/g Processor
 - General-Purpose Processor- High Performance (For interrupt driven baremetal and RTOS code)
