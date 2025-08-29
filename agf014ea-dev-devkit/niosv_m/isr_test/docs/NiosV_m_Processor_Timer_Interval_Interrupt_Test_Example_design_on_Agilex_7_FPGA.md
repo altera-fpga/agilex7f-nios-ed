@@ -7,7 +7,7 @@
 This example design includes a NIOS V/m embedded processor connected to the Interval Timer IP to issue alarm-based interrupt to the NIOSV/m core. 
 The objective of the design is to demonstrate the interrupt behavior and handling by the Nios V embedded processor. Once the interrupt is issued; the Nios V prints the system ID of the SYS ID peripheral core.
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_m/isr_test/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_m/isr_test/img/isr_test.png)
 
 
 ## Project Details

@@ -14,7 +14,7 @@
  
  The ECC Status and ECC Source signals are probed and observed using Questa Simulation
  
- ![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_g/agilex7_ecc_lite/img/agilex7_ecc_lite.png)
+ ![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ecc_lite/img/ecc_lite.png)
 
 ## Project Details
 

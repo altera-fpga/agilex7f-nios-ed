@@ -7,7 +7,7 @@
 This example design includes a NIOS V/m embedded processor connected to the OCM and JTAG UART IP. 
 The objective of the design is to write and read into specific locations of On Chip RAM. This implementation of On Chip RAM uses the Avalon interface.
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_m/ocm_mem_test/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014ea-dev-devkit/niosv_m/ocm_mem_test/img/ocm_mem_test.png)
 
 ## Project Details
 
