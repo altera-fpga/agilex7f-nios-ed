@@ -27,7 +27,7 @@ The current version of the Nios® V/g processor custom instruction interface sup
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_basic_operations/img/block_diagram.png
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_basic_operations/docs/Nios_Vg_Processor_CI_CRC_Design_on_Agilex_7_FPGA.md
 
 # Getting Started
 
