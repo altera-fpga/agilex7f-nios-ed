@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip>
+ <presets version="12.1">
+  <preset
+     name="agilex7_niosv_m_0_inst"
+     kind="intel_niosv_m"
+     version="All"
+     description=""
+     board="Agilex 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA"
+     preset_category="">
+   <parameter name="enableDebug" value="true" />
+   <parameter name="resetOffset" value="0" />
+   <parameter name="enableECCLite" value="false" />
+   <parameter name="enableDebugReset" value="false" />
+   <parameter name="numGpr" value="32" />
+   <parameter name="useResetReq" value="false" />
+   <parameter name="resetSlave" value="intel_onchip_memory_0.axi_s1" />
+   <parameter name="pipelineArch" value="true" />
+  </preset>
+ </presets>
+</ip>

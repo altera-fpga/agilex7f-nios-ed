@@ -1,4 +1,4 @@
-package require -exact qsys 24.3.1
+package require -exact qsys 23.4
 
 # create the system "sys"
 proc do_create_sys {} {
@@ -37,31 +37,23 @@ proc do_create_sys {} {
 	save_instantiation
 	add_component intel_niosv_g_0 ip/sys/sys_intel_niosv_g_0.ip intel_niosv_g intel_niosv_g_0
 	load_component intel_niosv_g_0
-	set_component_parameter_value Blind_Window_Period {1000}
 	set_component_parameter_value CUSTOM_OP {}
-	set_component_parameter_value Default_Timeout_Period {255}
 	set_component_parameter_value SUB_OP {}
 	set_component_parameter_value dataCacheSize {4096}
-	set_component_parameter_value disableFsqrtFdiv {0}
 	set_component_parameter_value dtcm1Base {1073741824}
 	set_component_parameter_value dtcm1InitFile {}
 	set_component_parameter_value dtcm1Size {4096}
 	set_component_parameter_value dtcm2Base {1610612736}
 	set_component_parameter_value dtcm2InitFile {}
 	set_component_parameter_value dtcm2Size {4096}
-	set_component_parameter_value enableBranchPrediction {0}
 	set_component_parameter_value enableDebug {1}
 	set_component_parameter_value enableDebugReset {0}
-	set_component_parameter_value enableECCFull {0}
 	set_component_parameter_value enableECCLite {1}
-	set_component_parameter_value enableFPU {0}
-	set_component_parameter_value enableLockstep {0}
-	set_component_parameter_value enableLockstepExtRst {0}
+	set_component_parameter_value enableFPU {1}
 	set_component_parameter_value enableMulDiv {1}
 	set_component_parameter_value funct3 {}
 	set_component_parameter_value funct7_l {}
 	set_component_parameter_value funct7_u {}
-	set_component_parameter_value hartId {0}
 	set_component_parameter_value instCacheSize {4096}
 	set_component_parameter_value itcm1Base {0}
 	set_component_parameter_value itcm1InitFile {}
@@ -108,10 +100,9 @@ proc do_create_sys {} {
 	set_instantiation_assignment_value embeddedsw.configuration.NiosVITCM1Size {0}
 	set_instantiation_assignment_value embeddedsw.configuration.NiosVITCM2Base {0}
 	set_instantiation_assignment_value embeddedsw.configuration.NiosVITCM2Size {0}
-	set_instantiation_assignment_value embeddedsw.configuration.NiosVTCMVersion {3.0.0}
+	set_instantiation_assignment_value embeddedsw.configuration.NiosVTCMVersion {2.1.0}
 	set_instantiation_assignment_value embeddedsw.configuration.cpuArchitecture {Bantam Lake}
-	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {0}
-	set_instantiation_assignment_value embeddedsw.configuration.fsqrtFdivDisabled {0}
+	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {1}
 	set_instantiation_assignment_value embeddedsw.configuration.isTimerDevice {1}
 	set_instantiation_assignment_value embeddedsw.configuration.numGpr {32}
 	set_instantiation_assignment_value embeddedsw.configuration.resetOffset {0}
@@ -145,26 +136,20 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value platform_irq_rx irqScheme {INDIVIDUAL_REQUESTS}
 	add_instantiation_interface_port platform_irq_rx platform_irq_rx_irq irq 16 STD_LOGIC_VECTOR Input
 	add_instantiation_interface instruction_manager axi4 OUTPUT
-	set_instantiation_interface_parameter_value instruction_manager addressCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value instruction_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {8}
-	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
-	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value instruction_manager issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value instruction_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value instruction_manager issuesWRAPBursts {true}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
-	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
 	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {8}
-	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value instruction_manager traceSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value instruction_manager uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value instruction_manager userData {false}
 	set_instantiation_interface_parameter_value instruction_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager writeIssuingCapability {1}
 	add_instantiation_interface_port instruction_manager instruction_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -195,26 +180,20 @@ proc do_create_sys {} {
 	add_instantiation_interface_port instruction_manager instruction_manager_rready rready 1 STD_LOGIC Output
 	add_instantiation_interface_port instruction_manager instruction_manager_rlast rlast 1 STD_LOGIC Input
 	add_instantiation_interface data_manager axi4 OUTPUT
-	set_instantiation_interface_parameter_value data_manager addressCheck {false}
 	set_instantiation_interface_parameter_value data_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value data_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
-	set_instantiation_interface_parameter_value data_manager dataCheck {false}
-	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value data_manager issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value data_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value data_manager issuesWRAPBursts {true}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
-	set_instantiation_interface_parameter_value data_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value data_manager poison {false}
 	set_instantiation_interface_parameter_value data_manager readIssuingCapability {1}
-	set_instantiation_interface_parameter_value data_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value data_manager traceSignals {false}
 	set_instantiation_interface_parameter_value data_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value data_manager uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value data_manager userData {false}
 	set_instantiation_interface_parameter_value data_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value data_manager writeIssuingCapability {1}
 	add_instantiation_interface_port data_manager data_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -243,17 +222,14 @@ proc do_create_sys {} {
 	add_instantiation_interface_port data_manager data_manager_rlast rlast 1 STD_LOGIC Input
 	add_instantiation_interface_port data_manager data_manager_rready rready 1 STD_LOGIC Output
 	add_instantiation_interface data_tcs1 axi4lite INPUT
-	set_instantiation_interface_parameter_value data_tcs1 addressCheck {false}
 	set_instantiation_interface_parameter_value data_tcs1 associatedClock {clk}
 	set_instantiation_interface_parameter_value data_tcs1 associatedReset {reset}
 	set_instantiation_interface_parameter_value data_tcs1 bridgesToMaster {}
 	set_instantiation_interface_parameter_value data_tcs1 combinedAcceptanceCapability {1}
-	set_instantiation_interface_parameter_value data_tcs1 dataCheck {false}
 	set_instantiation_interface_parameter_value data_tcs1 dfhFeatureGuid {0}
 	set_instantiation_interface_parameter_value data_tcs1 dfhFeatureId {35}
 	set_instantiation_interface_parameter_value data_tcs1 dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value data_tcs1 dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value data_tcs1 dfhFeatureType {3}
 	set_instantiation_interface_parameter_value data_tcs1 dfhGroupId {0}
 	set_instantiation_interface_parameter_value data_tcs1 dfhParameterData {}
 	set_instantiation_interface_parameter_value data_tcs1 dfhParameterDataLength {}
@@ -266,11 +242,9 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value data_tcs1 poison {false}
 	set_instantiation_interface_parameter_value data_tcs1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value data_tcs1 readDataReorderingDepth {1}
-	set_instantiation_interface_parameter_value data_tcs1 securityAttribute {false}
 	set_instantiation_interface_parameter_value data_tcs1 traceSignals {false}
 	set_instantiation_interface_parameter_value data_tcs1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value data_tcs1 uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value data_tcs1 userData {false}
 	set_instantiation_interface_parameter_value data_tcs1 wakeupSignals {false}
 	set_instantiation_interface_parameter_value data_tcs1 writeAcceptanceCapability {1}
 	add_instantiation_interface_port data_tcs1 data_tcs1_awaddr awaddr 12 STD_LOGIC_VECTOR Input
@@ -293,17 +267,14 @@ proc do_create_sys {} {
 	add_instantiation_interface_port data_tcs1 data_tcs1_rvalid rvalid 1 STD_LOGIC Output
 	add_instantiation_interface_port data_tcs1 data_tcs1_rready rready 1 STD_LOGIC Input
 	add_instantiation_interface data_tcs2 axi4lite INPUT
-	set_instantiation_interface_parameter_value data_tcs2 addressCheck {false}
 	set_instantiation_interface_parameter_value data_tcs2 associatedClock {clk}
 	set_instantiation_interface_parameter_value data_tcs2 associatedReset {reset}
 	set_instantiation_interface_parameter_value data_tcs2 bridgesToMaster {}
 	set_instantiation_interface_parameter_value data_tcs2 combinedAcceptanceCapability {1}
-	set_instantiation_interface_parameter_value data_tcs2 dataCheck {false}
 	set_instantiation_interface_parameter_value data_tcs2 dfhFeatureGuid {0}
 	set_instantiation_interface_parameter_value data_tcs2 dfhFeatureId {35}
 	set_instantiation_interface_parameter_value data_tcs2 dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value data_tcs2 dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value data_tcs2 dfhFeatureType {3}
 	set_instantiation_interface_parameter_value data_tcs2 dfhGroupId {0}
 	set_instantiation_interface_parameter_value data_tcs2 dfhParameterData {}
 	set_instantiation_interface_parameter_value data_tcs2 dfhParameterDataLength {}
@@ -316,11 +287,9 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value data_tcs2 poison {false}
 	set_instantiation_interface_parameter_value data_tcs2 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value data_tcs2 readDataReorderingDepth {1}
-	set_instantiation_interface_parameter_value data_tcs2 securityAttribute {false}
 	set_instantiation_interface_parameter_value data_tcs2 traceSignals {false}
 	set_instantiation_interface_parameter_value data_tcs2 trustzoneAware {true}
 	set_instantiation_interface_parameter_value data_tcs2 uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value data_tcs2 userData {false}
 	set_instantiation_interface_parameter_value data_tcs2 wakeupSignals {false}
 	set_instantiation_interface_parameter_value data_tcs2 writeAcceptanceCapability {1}
 	add_instantiation_interface_port data_tcs2 data_tcs2_awaddr awaddr 12 STD_LOGIC_VECTOR Input
@@ -360,7 +329,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value timer_sw_agent dfhFeatureId {35}
 	set_instantiation_interface_parameter_value timer_sw_agent dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value timer_sw_agent dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value timer_sw_agent dfhFeatureType {3}
 	set_instantiation_interface_parameter_value timer_sw_agent dfhGroupId {0}
 	set_instantiation_interface_parameter_value timer_sw_agent dfhParameterData {}
 	set_instantiation_interface_parameter_value timer_sw_agent dfhParameterDataLength {}
@@ -391,7 +359,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value timer_sw_agent timingUnits {Cycles}
 	set_instantiation_interface_parameter_value timer_sw_agent transparentBridge {false}
 	set_instantiation_interface_parameter_value timer_sw_agent waitrequestAllowance {0}
-	set_instantiation_interface_parameter_value timer_sw_agent waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value timer_sw_agent wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value timer_sw_agent writeLatency {0}
 	set_instantiation_interface_parameter_value timer_sw_agent writeWaitStates {0}
@@ -431,7 +398,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value dm_agent dfhFeatureId {35}
 	set_instantiation_interface_parameter_value dm_agent dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value dm_agent dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value dm_agent dfhFeatureType {3}
 	set_instantiation_interface_parameter_value dm_agent dfhGroupId {0}
 	set_instantiation_interface_parameter_value dm_agent dfhParameterData {}
 	set_instantiation_interface_parameter_value dm_agent dfhParameterDataLength {}
@@ -462,7 +428,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value dm_agent timingUnits {Cycles}
 	set_instantiation_interface_parameter_value dm_agent transparentBridge {false}
 	set_instantiation_interface_parameter_value dm_agent waitrequestAllowance {0}
-	set_instantiation_interface_parameter_value dm_agent waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value dm_agent wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value dm_agent writeLatency {0}
 	set_instantiation_interface_parameter_value dm_agent writeWaitStates {0}
@@ -567,7 +532,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value s1 dfhFeatureId {35}
 	set_instantiation_interface_parameter_value s1 dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value s1 dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value s1 dfhFeatureType {3}
 	set_instantiation_interface_parameter_value s1 dfhGroupId {0}
 	set_instantiation_interface_parameter_value s1 dfhParameterData {}
 	set_instantiation_interface_parameter_value s1 dfhParameterDataLength {}
@@ -598,7 +562,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value s1 timingUnits {Cycles}
 	set_instantiation_interface_parameter_value s1 transparentBridge {false}
 	set_instantiation_interface_parameter_value s1 waitrequestAllowance {0}
-	set_instantiation_interface_parameter_value s1 waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value s1 wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value s1 writeLatency {0}
 	set_instantiation_interface_parameter_value s1 writeWaitStates {0}
@@ -674,7 +637,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureId {35}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureType {3}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhGroupId {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhParameterData {}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhParameterDataLength {}
@@ -705,7 +667,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value avalon_jtag_slave timingUnits {Cycles}
 	set_instantiation_interface_parameter_value avalon_jtag_slave transparentBridge {false}
 	set_instantiation_interface_parameter_value avalon_jtag_slave waitrequestAllowance {0}
-	set_instantiation_interface_parameter_value avalon_jtag_slave waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value avalon_jtag_slave wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value avalon_jtag_slave writeLatency {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave writeWaitStates {0}
@@ -816,7 +777,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value control_slave dfhFeatureId {35}
 	set_instantiation_interface_parameter_value control_slave dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value control_slave dfhFeatureMinorVersion {0}
-	set_instantiation_interface_parameter_value control_slave dfhFeatureType {3}
 	set_instantiation_interface_parameter_value control_slave dfhGroupId {0}
 	set_instantiation_interface_parameter_value control_slave dfhParameterData {}
 	set_instantiation_interface_parameter_value control_slave dfhParameterDataLength {}
@@ -847,7 +807,6 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value control_slave timingUnits {Cycles}
 	set_instantiation_interface_parameter_value control_slave transparentBridge {false}
 	set_instantiation_interface_parameter_value control_slave waitrequestAllowance {0}
-	set_instantiation_interface_parameter_value control_slave waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value control_slave wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value control_slave writeLatency {0}
 	set_instantiation_interface_parameter_value control_slave writeWaitStates {0}
@@ -895,7 +854,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value clock_in.out_clk/sysid_qsys_0.clk resetDomainSysInfo {1}
 	add_connection intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {22}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent baseAddress {0x00100000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent defaultConnection {0}
@@ -918,7 +877,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressWidthSysInfo {22}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent baseAddress {0x00110000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent defaultConnection {0}
@@ -941,7 +900,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 addressWidthSysInfo {22}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 baseAddress {0x0000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 defaultConnection {0}
@@ -964,7 +923,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_onchip_memory_0.s1 slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressWidthSysInfo {22}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave baseAddress {0x00110040}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave defaultConnection {0}
@@ -987,7 +946,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressWidthSysInfo {22}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave baseAddress {0x00212040}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave defaultConnection {0}
@@ -1010,7 +969,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {21}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent baseAddress {0x00100000}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent defaultConnection {0}
@@ -1033,7 +992,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 addressMapSysInfo {<address-map><slave name='intel_onchip_memory_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 addressWidthSysInfo {}
+	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 addressWidthSysInfo {21}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 baseAddress {0x0000}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_onchip_memory_0.s1 defaultConnection {0}
@@ -1142,11 +1101,6 @@ proc do_create_sys {} {
 }
 
 proc do_set_exported_interface_sysinfo_parameters {} {
-	#load_system sys.qsys
-	#set_exported_interface_sysinfo_parameter_value clk clock_domain {1}
-	#set_exported_interface_sysinfo_parameter_value clk clock_rate {50000000}
-	#set_exported_interface_sysinfo_parameter_value clk reset_domain {1}
-	#save_system sys.qsys
 }
 
 # create all the systems, from bottom up

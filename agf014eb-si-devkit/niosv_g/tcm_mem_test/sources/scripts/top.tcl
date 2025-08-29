@@ -86,7 +86,9 @@ if {$make_assignments} {
 	set_global_assignment -name IP_FILE ip/ag_qsys/ag_qsys_onchip_memory2_3.ip
 	set_global_assignment -name BOARD default
 	set_location_assignment PIN_U52 -to fpga_clk_100
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to fpga_clk_100 -entity top
 	set_location_assignment PIN_G52 -to fpga_reset_reset
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to fpga_reset_reset -entity top
 	set_location_assignment PIN_T17 -to ddr4_emif_mem_mem_a[0]
 	set_location_assignment PIN_V17 -to ddr4_emif_mem_mem_a[1]
 	set_location_assignment PIN_U16 -to ddr4_emif_mem_mem_a[2]

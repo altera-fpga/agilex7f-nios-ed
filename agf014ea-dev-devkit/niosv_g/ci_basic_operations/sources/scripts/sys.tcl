@@ -1,4 +1,4 @@
-package require -exact qsys 23.4
+package require -exact qsys 25.1
 
 # create the system "sys"
 proc do_create_sys {} {
@@ -22,7 +22,7 @@ proc do_create_sys {} {
 	load_instantiation clock_in
 	remove_instantiation_interfaces_and_ports
 	add_instantiation_interface in_clk clock INPUT
-	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk clockRate {50000000}
 	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
 	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
 	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
@@ -52,16 +52,16 @@ proc do_create_sys {} {
 	add_instantiation_interface_port niosv_custom_instruction_subordinate reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port niosv_custom_instruction_subordinate result result 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	
 	add_component intel_niosv_g_0 ip/sys/sys_intel_niosv_g_0.ip intel_niosv_g intel_niosv_g_0
 	load_component intel_niosv_g_0
 	apply_component_preset intel_niosv_g
 	save_component
-	
+
 	add_component jtag_uart_0 ip/sys/sys_jtag_uart_0.ip altera_avalon_jtag_uart jtag_uart_0
 	load_component jtag_uart_0
 	set_component_parameter_value allowMultipleConnections {0}
 	set_component_parameter_value hubInstanceID {0}
+	set_component_parameter_value printingMethod {0}
 	set_component_parameter_value readBufferDepth {64}
 	set_component_parameter_value readIRQThreshold {8}
 	set_component_parameter_value simInputCharacterStream {}
@@ -110,6 +110,7 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureId {35}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureMinorVersion {0}
+	set_instantiation_interface_parameter_value avalon_jtag_slave dfhFeatureType {3}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhGroupId {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhParameterData {}
 	set_instantiation_interface_parameter_value avalon_jtag_slave dfhParameterDataLength {}
@@ -140,6 +141,7 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value avalon_jtag_slave timingUnits {Cycles}
 	set_instantiation_interface_parameter_value avalon_jtag_slave transparentBridge {false}
 	set_instantiation_interface_parameter_value avalon_jtag_slave waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value avalon_jtag_slave waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value avalon_jtag_slave wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value avalon_jtag_slave writeLatency {0}
 	set_instantiation_interface_parameter_value avalon_jtag_slave writeWaitStates {0}
@@ -167,7 +169,7 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value irq irqScheme {NONE}
 	add_instantiation_interface_port irq av_irq irq 1 STD_LOGIC Output
 	save_instantiation
-	
+
 	add_component onchip_memory2_0 ip/sys/sys_intel_onchip_memory_0.ip intel_onchip_memory intel_onchip_memory_0
 	load_component onchip_memory2_0
 	apply_component_preset on_chip_memory_2
@@ -200,12 +202,12 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {DEASSERT}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component s10_user_rst_clkgate_0 ip/sys/sys_s10_user_rst_clkgate_0.ip altera_s10_user_rst_clkgate s10_user_rst_clkgate_0
-	load_component s10_user_rst_clkgate_0
+	add_component reset_release ip/sys/sys_s10_user_rst_clkgate_0.ip altera_s10_user_rst_clkgate s10_user_rst_clkgate_0
+	load_component reset_release
 	set_component_parameter_value outputType {Reset Interface}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
-	load_instantiation s10_user_rst_clkgate_0
+	load_instantiation reset_release
 	remove_instantiation_interfaces_and_ports
 	add_instantiation_interface ninit_done reset OUTPUT
 	set_instantiation_interface_parameter_value ninit_done associatedClock {}
@@ -273,6 +275,7 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value control_slave dfhFeatureId {35}
 	set_instantiation_interface_parameter_value control_slave dfhFeatureMajorVersion {0}
 	set_instantiation_interface_parameter_value control_slave dfhFeatureMinorVersion {0}
+	set_instantiation_interface_parameter_value control_slave dfhFeatureType {3}
 	set_instantiation_interface_parameter_value control_slave dfhGroupId {0}
 	set_instantiation_interface_parameter_value control_slave dfhParameterData {}
 	set_instantiation_interface_parameter_value control_slave dfhParameterDataLength {}
@@ -303,6 +306,7 @@ proc do_create_sys {} {
 	set_instantiation_interface_parameter_value control_slave timingUnits {Cycles}
 	set_instantiation_interface_parameter_value control_slave transparentBridge {false}
 	set_instantiation_interface_parameter_value control_slave waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value control_slave waitrequestTimeout {1024}
 	set_instantiation_interface_parameter_value control_slave wellBehavedWaitrequest {false}
 	set_instantiation_interface_parameter_value control_slave writeLatency {0}
 	set_instantiation_interface_parameter_value control_slave writeWaitStates {0}
@@ -360,7 +364,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.ci_custom1/custom_pe_2_0.niosv_custom_instruction_subordinate customInstructionSubordinates {}
 	add_connection intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {22}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent baseAddress {0x00100000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent defaultConnection {0}
@@ -383,7 +387,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.dm_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressWidthSysInfo {22}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent baseAddress {0x00110000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent defaultConnection {0}
@@ -406,7 +410,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/intel_niosv_g_0.timer_sw_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressWidthSysInfo {22}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave baseAddress {0x00110040}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave defaultConnection {0}
@@ -429,7 +433,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/jtag_uart_0.avalon_jtag_slave slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/onchip_memory2_0.s1
 	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 addressWidthSysInfo {22}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 baseAddress {0x0000}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 defaultConnection {0}
@@ -452,7 +456,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/onchip_memory2_0.s1 slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /><slave name='intel_niosv_g_0.timer_sw_agent' start='0x110000' end='0x110040' datawidth='32' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x110040' end='0x110048' datawidth='32' /><slave name='sysid_qsys_0.control_slave' start='0x212040' end='0x212048' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressWidthSysInfo {22}
+	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave baseAddress {0x00212040}
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave defaultConnection {0}
@@ -475,7 +479,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.data_manager/sysid_qsys_0.control_slave slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {21}
+	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent baseAddress {0x00100000}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent defaultConnection {0}
@@ -498,7 +502,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/intel_niosv_g_0.dm_agent slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 addressMapSysInfo {<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0xA0000' datawidth='32' /><slave name='intel_niosv_g_0.dm_agent' start='0x100000' end='0x110000' datawidth='32' /></address-map>}
-	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 addressWidthSysInfo {21}
+	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 addressWidthSysInfo {}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 arbitrationPriority {1}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 baseAddress {0x0000}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 defaultConnection {0}
@@ -520,7 +524,7 @@ proc do_create_sys {} {
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value intel_niosv_g_0.instruction_manager/onchip_memory2_0.s1 slaveDataWidthSysInfo {-1}
 	add_connection intel_niosv_g_0.platform_irq_rx/jtag_uart_0.irq
-	set_connection_parameter_value intel_niosv_g_0.platform_irq_rx/jtag_uart_0.irq interruptsUsedSysInfo {1}
+	set_connection_parameter_value intel_niosv_g_0.platform_irq_rx/jtag_uart_0.irq interruptsUsedSysInfo {-1}
 	set_connection_parameter_value intel_niosv_g_0.platform_irq_rx/jtag_uart_0.irq irqNumber {0}
 	add_connection reset_bridge_0.out_reset/intel_niosv_g_0.reset
 	set_connection_parameter_value reset_bridge_0.out_reset/intel_niosv_g_0.reset clockDomainSysInfo {2}
@@ -538,10 +542,10 @@ proc do_create_sys {} {
 	set_connection_parameter_value reset_bridge_0.out_reset/sysid_qsys_0.reset clockDomainSysInfo {2}
 	set_connection_parameter_value reset_bridge_0.out_reset/sysid_qsys_0.reset clockResetSysInfo {}
 	set_connection_parameter_value reset_bridge_0.out_reset/sysid_qsys_0.reset resetDomainSysInfo {2}
-	add_connection s10_user_rst_clkgate_0.ninit_done/reset_bridge_0.in_reset
-	set_connection_parameter_value s10_user_rst_clkgate_0.ninit_done/reset_bridge_0.in_reset clockDomainSysInfo {2}
-	set_connection_parameter_value s10_user_rst_clkgate_0.ninit_done/reset_bridge_0.in_reset clockResetSysInfo {}
-	set_connection_parameter_value s10_user_rst_clkgate_0.ninit_done/reset_bridge_0.in_reset resetDomainSysInfo {2}
+	add_connection reset_release.ninit_done/reset_bridge_0.in_reset
+	set_connection_parameter_value reset_release.ninit_done/reset_bridge_0.in_reset clockDomainSysInfo {2}
+	set_connection_parameter_value reset_release.ninit_done/reset_bridge_0.in_reset clockResetSysInfo {}
+	set_connection_parameter_value reset_release.ninit_done/reset_bridge_0.in_reset resetDomainSysInfo {2}
 
 	# add the exports
 	set_interface_property clk EXPORT_OF clock_in.in_clk
@@ -597,7 +601,7 @@ proc do_create_sys {} {
  <element __value="reset_bridge_0">
   <datum __value="_sortIndex" value="8" type="int" />
  </element>
- <element __value="s10_user_rst_clkgate_0">
+ <element __value="reset_release">
   <datum __value="_sortIndex" value="7" type="int" />
  </element>
  <element __value="sys_custom_pe_1_0">
@@ -618,9 +622,6 @@ proc do_create_sys {} {
 }
 
 proc do_set_exported_interface_sysinfo_parameters {} {
-	load_system sys.qsys
-	set_exported_interface_sysinfo_parameter_value clk clock_rate {50000000}
-	save_system sys.qsys
 }
 
 # create all the systems, from bottom up

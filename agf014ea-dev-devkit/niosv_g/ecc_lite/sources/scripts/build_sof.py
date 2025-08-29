@@ -72,6 +72,13 @@ for line in generate_ip.stdout:
     logfile.write(line)
 generate_ip.wait()
 
+
+# Generate hex file
+app_creation = subprocess.Popen(["niosv-shell < scripts/niosv_app_creation.sh"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,shell= True)
+for line in app_creation.stdout:
+    logfile.write(line)
+app_creation.wait()
+
 # Synthesis
 quartus_sync = subprocess.Popen(["quartus_syn","{}".format(qpf_dir)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT,cwd=cwd_1)
 for line in quartus_sync.stdout:

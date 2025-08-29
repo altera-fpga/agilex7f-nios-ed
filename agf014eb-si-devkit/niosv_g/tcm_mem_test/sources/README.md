@@ -1,3 +1,38 @@
+# Agilex 7 FPGA - Tightly Coupled Memory (TCM) Design Example on Nios® V/g Processor 
+
+Nios® V/g Processor-based TCM example design on the Agilex® 7 FPGA.
+
+## Description
+
+This example design is about how to use tightly coupled memory in Nios® V/g processor. The example application measures the memory access speed of different memories connected to the processor, such as TCM, on-chip memory and external memory interface (EMIF). In addition to that, the application showcases the speedup between cached and un-cached memories.
+
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014eb-si-devkit/niosv_g/tcm_mem_test/img/agilex7_tcm.png)
+
+## Project Details
+
+- **Title**: Agilex 7 FPGA - Tightly Coupled Memory (TCM) Design Example on Nios® V/g Processor 
+- **Source**: Github
+- **Design Support**: CTH
+- **Family**: Agilex 7
+- **Quartus Version**: 25.1.1
+- **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
+- **Device Part**: AGFB014R24B2E2V
+- **Design Package**: agilex7_tcm.zip
+- **Category**: Memory
+- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf014eb-si-devkit/niosv_g/tcm_mem_test
+- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.1.1-v1.0/agilex7_niosv_g_tcm_mem_test.zip
+
+## Documentation
+
+- **Title**: Design Document
+- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014eb-si-devkit/niosv_g/tcm_mem_test/docs/NiosV_g_Processor_Tightly_Coupled_Memory_Example_design_on_Agilex_7_FPGA.md
+
+# Getting Started
+
+Vendor: Altera
+
+Devkit Product Page: www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/f-series/dev-agf014.html
+
 1. Directory structure
 2. Using existing files (sof and elf) to run on hardware
 3. Building the design from scratch
@@ -55,7 +90,7 @@ niosv-app --bsp-dir=sw/bsp --app-dir=sw/app --srcs=sw/app/
 niosv-shell
 cmake -S ./sw/app -G "Unix Makefiles" -B sw/app/build
 make -C sw/app/build
-elf2hex sw/app/build/app.elf -b 0x3FFF -w 32 -e 0x7FFF sw/app/build/itcm.hex -r4
+niosv-download -g sw/app/build/app.elf -c 1
 ```
 
 #### d. Hardware Validation

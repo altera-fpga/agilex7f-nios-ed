@@ -89,9 +89,9 @@ void uc_main_task(void *task_data  __attribute__((unused))) {
         .use_dhcp = !DEF_TRUE,
  
         // Note, unused if use_dhcp is true.
-        .ipv4_addr_str    = "192.168.1.100",
+        .ipv4_addr_str    = "192.168.130.5",
         .ipv4_mask_str    = "255.255.255.0",
-        .ipv4_gateway_str = "192.168.1.254"
+        .ipv4_gateway_str = "192.168.130.254"
     };
     NET_IF_NBR if_nbr;
  

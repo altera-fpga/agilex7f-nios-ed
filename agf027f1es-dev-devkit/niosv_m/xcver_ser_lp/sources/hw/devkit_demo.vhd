@@ -1,3 +1,16 @@
+-- (C) 2001-2025 Altera Corporation. All rights reserved.
+-- Your use of Altera Corporation's design tools, logic functions and other 
+-- software and tools, and its AMPP partner logic functions, and any output 
+-- files from any of the foregoing (including device programming or simulation 
+-- files), and any associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License Subscription 
+-- Agreement, Altera IP License Agreement, or other applicable 
+-- license agreement, including, without limitation, that your use is for the 
+-- sole purpose of programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the applicable 
+-- agreement for further details.
+
+
 ------------------------------------------------------------------------------------------------------------
 -- Copyright (C) 2021-2022 Intel Corporation
 -- 
@@ -93,9 +106,9 @@ GENERIC
 		
 
       qsfpdd_fpga_i2c_scl    : INOUT STD_LOGIC;  	-- SCL: For both QSFP56 and QSFPDD56
-      qsfpdd_fpga_i2c_sda    : INOUT STD_LOGIC;   	-- SDA: For both QSFP56 and QSFPDD56
+      qsfpdd_fpga_i2c_sda    : INOUT STD_LOGIC   	-- SDA: For both QSFP56 and QSFPDD56
 		
-		noise_out :  OUT  STD_LOGIC_VECTOR((NUMBER_OF_WABS -1) DOWNTO 0)		-- Virtual IO
+		--noise_out :  OUT  STD_LOGIC_VECTOR((NUMBER_OF_WABS -1) DOWNTO 0)		-- Virtual IO
 		
 	);
 END devkit_demo;
@@ -1051,7 +1064,7 @@ iopll_core_noise_inst: iopll_core_noise -- 414.0625 Mhz
 		);
 		
 		
-	noise_out(i) <= wab_xor(wab_dout(i));
+	--noise_out(i) <= wab_xor(wab_dout(i));
 	
 	end generate generate_wabs;
 				  
@@ -1059,7 +1072,7 @@ end generate Generate_noise_logic;
 
 Generate_no_noise_logic:
 if not(GENERATE_INTERNAL_NOISE) generate
-	noise_out 										<= (OTHERS => '0');
+	--noise_out 										<= (OTHERS => '0');
 	pll_locked_core_noise						<= '0';
 end generate Generate_no_noise_logic;
 

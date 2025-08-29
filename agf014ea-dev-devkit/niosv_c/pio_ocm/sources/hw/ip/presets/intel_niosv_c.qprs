@@ -6,7 +6,7 @@
      kind="intel_niosv_c"
      version="All"
      description=""
-     board="Intel Agilex 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA"
+     board="Agilex 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA"
      preset_category="">
    <parameter name="resetOffset" value="0" />
    <parameter name="enableECCLite" value="true" />

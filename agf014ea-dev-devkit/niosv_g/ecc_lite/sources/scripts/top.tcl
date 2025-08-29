@@ -76,6 +76,20 @@ if {$make_assignments} {
 	set_global_assignment -name IP_FILE ip/sys/sys_sysid_qsys_0.ip
 	set_global_assignment -name IP_FILE ip/sys/sys_reset_bridge_0.ip
 
+set_location_assignment PIN_T59 -to intel_niosv_g_0_cpu_ecc_status_ecc_source[3]
+set_location_assignment PIN_P49 -to intel_niosv_g_0_cpu_ecc_status_ecc_source[2]
+set_location_assignment PIN_G58 -to intel_niosv_g_0_cpu_ecc_status_ecc_source[1]
+set_location_assignment PIN_U56 -to intel_niosv_g_0_cpu_ecc_status_ecc_source[0]
+set_location_assignment PIN_U58 -to intel_niosv_g_0_cpu_ecc_status_ecc_status[1]
+set_location_assignment PIN_H51 -to intel_niosv_g_0_cpu_ecc_status_ecc_status[0]
+
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_source[3] -entity sys
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_source[2] -entity sys
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_source[1] -entity sys
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_source[0] -entity sys
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_status[1] -entity sys
+set_instance_assignment -name IO_STANDARD "1.2 V" -to intel_niosv_g_0_cpu_ecc_status_ecc_status[0] -entity sys
+
 	# Commit assignments
 	export_assignments
 

@@ -1,8 +1,7 @@
 This directory contains the web server example designs based on the Nios V/g core for Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA. Following are the designs:
 
-a. CI basic
-
-b. CI CRC
-
-c. ECC Lite
-
+    a. TinyML LiteRT
+    b. CI Basic Operation
+    c. CI CRC
+    d. ECC Lite
+    e. Hello World

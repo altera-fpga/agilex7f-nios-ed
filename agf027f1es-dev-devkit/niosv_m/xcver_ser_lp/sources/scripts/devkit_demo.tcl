@@ -1,16 +1,3 @@
-# (C) 2001-2024 Intel Corporation. All rights reserved.
-# Your use of Intel Corporation's design tools, logic functions and other 
-# software and tools, and its AMPP partner logic functions, and any output 
-# files from any of the foregoing (including device programming or simulation 
-# files), and any associated documentation or information are expressly subject 
-# to the terms and conditions of the Intel Program License Subscription 
-# Agreement, Intel FPGA IP License Agreement, or other applicable 
-# license agreement, including, without limitation, that your use is for the 
-# sole purpose of programming logic devices manufactured by Intel and sold by 
-# Intel or its authorized distributors.  Please refer to the applicable 
-# agreement for further details.
-
-
 # Copyright (C) 2024  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
 # and other software and tools, and any partner logic 
@@ -243,6 +230,37 @@ if {$make_assignments} {
 	set_instance_assignment -name IO_STANDARD "1.2 V" -to qsfpdd_fpga_i2c_sda -entity devkit_demo
 	set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to qsfpdd_txp -entity devkit_demo
 	set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to qsfpdd_rxp -entity devkit_demo
+
+set_location_assignment PIN_FGTL12C_TX_Q1_CH0N -to qsfpdd_txn[3]
+set_location_assignment PIN_FGTL12C_TX_Q1_CH1N -to qsfpdd_txn[2]
+set_location_assignment PIN_FGTL12C_TX_Q1_CH2N -to qsfpdd_txn[1]
+set_location_assignment PIN_FGTL12C_TX_Q1_CH3N -to qsfpdd_txn[0]
+set_location_assignment PIN_FGTL12C_TX_Q2_CH0N -to qsfpdd_txn[7]
+set_location_assignment PIN_FGTL12C_TX_Q2_CH1N -to qsfpdd_txn[6]
+set_location_assignment PIN_FGTL12C_TX_Q3_CH2N -to qsfpdd_txn[5]
+set_location_assignment PIN_FGTL12C_TX_Q3_CH3N -to qsfpdd_txn[4]
+
+
+set_location_assignment PIN_FGTL12C_RX_Q1_CH0N -to qsfpdd_rxn[3]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH1N -to qsfpdd_rxn[2]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH2N -to qsfpdd_rxn[1]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH3N -to qsfpdd_rxn[0]
+set_location_assignment PIN_FGTL12C_RX_Q2_CH0N -to qsfpdd_rxn[7]
+set_location_assignment PIN_FGTL12C_RX_Q2_CH1N -to qsfpdd_rxn[6]
+set_location_assignment PIN_FGTL12C_RX_Q3_CH2N -to qsfpdd_rxn[5]
+set_location_assignment PIN_FGTL12C_RX_Q3_CH3N -to qsfpdd_rxn[4]
+
+set_location_assignment PIN_FGTL12C_RX_Q1_CH0P -to qsfpdd_rxp[3]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH1P -to qsfpdd_rxp[2]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH2P -to qsfpdd_rxp[1]
+set_location_assignment PIN_FGTL12C_RX_Q1_CH3P -to qsfpdd_rxp[0]
+set_location_assignment PIN_FGTL12C_RX_Q2_CH0P -to qsfpdd_rxp[7]
+set_location_assignment PIN_FGTL12C_RX_Q2_CH1P -to qsfpdd_rxp[6]
+set_location_assignment PIN_FGTL12C_RX_Q3_CH2P -to qsfpdd_rxp[5]
+set_location_assignment PIN_FGTL12C_RX_Q3_CH3P -to qsfpdd_rxp[4]
+
+set_global_assignment -name QIP_FILE support_logic/devkit_demo_auto_tiles.qip -comment "This order dependent setting should appear after all other QIP_FILE and IP_FILE settings" -tag quartus_tlg
+set_global_assignment -name SPD_FILE support_logic/devkit_demo_auto_tiles.spd -tag quartus_tlg
 
 	# Commit assignments
 	export_assignments

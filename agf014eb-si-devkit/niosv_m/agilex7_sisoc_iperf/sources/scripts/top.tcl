@@ -160,6 +160,10 @@ if {$make_assignments} {
 	set_location_assignment PIN_B43 -to user_led[1]
 	set_location_assignment PIN_C42 -to user_led[2]
 	set_location_assignment PIN_A42 -to user_led[3]
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to user_led[3] -entity top
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to user_led[2] -entity top
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to user_led[1] -entity top
+	set_instance_assignment -name IO_STANDARD "1.2 V" -to user_led[0] -entity top
 
 	# Commit assignments
 	export_assignments

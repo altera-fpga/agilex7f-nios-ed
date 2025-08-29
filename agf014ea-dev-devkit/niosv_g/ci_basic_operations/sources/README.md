@@ -1,3 +1,40 @@
+# Agilex 7 FPGA - Custom Instruction Basic Operations Design Example on Nios® V/g Processor 
+
+Nios® V/g Processor-based custom instruction example design on the Agilex® 7 FPGA.
+
+## Description
+
+A Processing Engine (PE) that performs basic arithmetic and logical computations is connected to the Nios® V/g processor using the custom instruction interface. 
+
+The current version of the Nios® V/g processor custom instruction interface supports operations up-to 32-Bit. 
+
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_basic_operations/img/agilex7_ci_basic_operations.png)
+
+## Project Details
+
+* **Title**: Agilex 7 FPGA - Custom Instruction Basic Operations Design Example on Nios® V/g Processor 
+* **Source**: Github
+* **Design Support**: CTH
+* **Family**: Agilex 7
+* **Quartus Version**: 25.1.1
+* **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
+* **Device Part**: AGFB014R24B2E2V
+* **Design Package**: agilex7_ci_basic_operations.zip
+* **Category**: Custom Instruction
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_basic_operations
+* **downloadURL**:https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.1.1-v1.0/agilex7_niosv_g_ci_basic_operations.zip
+
+## Documentation
+
+* **Title**: Design Document
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/tree/rel/25.1.1/agf014ea-dev-devkit/niosv_g/ci_basic_operations/img/block_diagram.png
+
+# Getting Started
+
+Vendor: Altera
+
+Devkit Product Page: www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/f-series/dev-agf014.html
+
 1. Directory structure
 2. Operations performed by Processing Engine (PE)
 3. Using existing files (sof and elf) to run on hardware
@@ -13,7 +50,7 @@
 
 5. Running simulation
 
-### 1. Directory Structure:
+### Directory Structure:
 
 The directory structure of this top-level project folder is explained below:
 
@@ -23,7 +60,7 @@ The directory structure of this top-level project folder is explained below:
 
 - scripts - This folder consists of scripts to build the design
 
-### 2. Operations performed by Processing Engine (PE)
+### Operations performed by Processing Engine (PE)
  
 A Processing Engine (PE) is connected to the Niosv/g processor using the custom instruction interface which performs the following 32-Bit arithmetic and logical operations:
  
@@ -36,13 +73,13 @@ A Processing Engine (PE) is connected to the Niosv/g processor using the custom 
 - Merge lower words (Combine/Merge the lower words of two inputs)
 - Merge higher words (Combine/Merge the higher words of two inputs)
  
-### 3. Using existing files to run the design on hardware
+### Using existing files to run the design on hardware
  
 - The sof and elf files required to run the design can be found in "ready_to_test" folder 
 
 - Refer the Hardware validation section (3.d) for the steps
  
-### 4. Building the design from scratch
+### Building the design from scratch
  
 The steps to build the project from scratch are mentioned below:
  
@@ -91,7 +128,7 @@ niosv-download -g ready_to_test/app.elf -c 1
 juart-terminal -c 1 -i 0
 ```
 
-### 5. Running simulation
+### Running simulation
 
 Simulation is enabled for this design where the memory is initialized with the application hex. Use the following commands to run the simulation:
     

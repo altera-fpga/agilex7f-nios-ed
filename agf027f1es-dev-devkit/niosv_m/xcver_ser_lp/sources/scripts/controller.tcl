@@ -1,17 +1,4 @@
-# (C) 2001-2024 Intel Corporation. All rights reserved.
-# Your use of Intel Corporation's design tools, logic functions and other 
-# software and tools, and its AMPP partner logic functions, and any output 
-# files from any of the foregoing (including device programming or simulation 
-# files), and any associated documentation or information are expressly subject 
-# to the terms and conditions of the Intel Program License Subscription 
-# Agreement, Intel FPGA IP License Agreement, or other applicable 
-# license agreement, including, without limitation, that your use is for the 
-# sole purpose of programming logic devices manufactured by Intel and sold by 
-# Intel or its authorized distributors.  Please refer to the applicable 
-# agreement for further details.
-
-
-package require -exact qsys 24.3.1
+package require -exact qsys 24.2
 
 # create the system "controller"
 proc do_create_controller {} {
@@ -428,7 +415,6 @@ proc do_create_controller {} {
 	load_component jtag_uart
 	set_component_parameter_value allowMultipleConnections {0}
 	set_component_parameter_value hubInstanceID {0}
-	set_component_parameter_value printingMethod {0}
 	set_component_parameter_value readBufferDepth {64}
 	set_component_parameter_value readIRQThreshold {8}
 	set_component_parameter_value simInputCharacterStream {}
@@ -772,12 +758,10 @@ proc do_create_controller {} {
 	save_instantiation
 	add_component niosv_m ip/controller/controller_intel_niosv_m_0.ip intel_niosv_m intel_niosv_m_0
 	load_component niosv_m
-	set_component_parameter_value enableAvalonInterface {0}
 	set_component_parameter_value enableDebug {1}
 	set_component_parameter_value enableDebugReset {0}
 	set_component_parameter_value enableECCLite {0}
 	set_component_parameter_value hartId {0}
-	set_component_parameter_value interruptMode {0}
 	set_component_parameter_value numGpr {32}
 	set_component_parameter_value pipelineArch {1}
 	set_component_parameter_value resetOffset {0}
@@ -798,7 +782,6 @@ proc do_create_controller {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.ICACHE_LINE_SIZE_LOG2 {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.ICACHE_SIZE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.INST_ADDR_WIDTH {32}
-	set_instantiation_assignment_value embeddedsw.CMacro.INT_MODE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.MTIME_OFFSET {0x00410200}
 	set_instantiation_assignment_value embeddedsw.CMacro.NIOSV_CORE_VARIANT {1}
 	set_instantiation_assignment_value embeddedsw.CMacro.NUM_GPR {32}
@@ -808,8 +791,6 @@ proc do_create_controller {} {
 	set_instantiation_assignment_value embeddedsw.configuration.HDLSimCachesCleared {1}
 	set_instantiation_assignment_value embeddedsw.configuration.cpuArchitecture {Abbotts Lake}
 	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {0}
-	set_instantiation_assignment_value embeddedsw.configuration.fsqrtFdivDisabled {0}
-	set_instantiation_assignment_value embeddedsw.configuration.interruptMode {0}
 	set_instantiation_assignment_value embeddedsw.configuration.isTimerDevice {1}
 	set_instantiation_assignment_value embeddedsw.configuration.numGpr {32}
 	set_instantiation_assignment_value embeddedsw.configuration.resetOffset {0}
@@ -837,23 +818,17 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value platform_irq_rx irqScheme {INDIVIDUAL_REQUESTS}
 	add_instantiation_interface_port platform_irq_rx platform_irq_rx_irq irq 16 STD_LOGIC_VECTOR Input
 	add_instantiation_interface instruction_manager axi4lite OUTPUT
-	set_instantiation_interface_parameter_value instruction_manager addressCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value instruction_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {8}
-	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
-	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
-	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
 	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {8}
-	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value instruction_manager traceSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value instruction_manager uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value instruction_manager userData {false}
 	set_instantiation_interface_parameter_value instruction_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager writeIssuingCapability {1}
 	add_instantiation_interface_port instruction_manager instruction_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -876,23 +851,17 @@ proc do_create_controller {} {
 	add_instantiation_interface_port instruction_manager instruction_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port instruction_manager instruction_manager_rready rready 1 STD_LOGIC Output
 	add_instantiation_interface data_manager axi4lite OUTPUT
-	set_instantiation_interface_parameter_value data_manager addressCheck {false}
 	set_instantiation_interface_parameter_value data_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value data_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
-	set_instantiation_interface_parameter_value data_manager dataCheck {false}
-	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
-	set_instantiation_interface_parameter_value data_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value data_manager poison {false}
 	set_instantiation_interface_parameter_value data_manager readIssuingCapability {1}
-	set_instantiation_interface_parameter_value data_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value data_manager traceSignals {false}
 	set_instantiation_interface_parameter_value data_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value data_manager uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value data_manager userData {false}
 	set_instantiation_interface_parameter_value data_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value data_manager writeIssuingCapability {1}
 	add_instantiation_interface_port data_manager data_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -1575,12 +1544,10 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value clk1 ptfSchematicName {}
 	add_instantiation_interface_port clk1 clk clk 1 STD_LOGIC Input
 	add_instantiation_interface axi_s1 axi4 INPUT
-	set_instantiation_interface_parameter_value axi_s1 addressCheck {false}
 	set_instantiation_interface_parameter_value axi_s1 associatedClock {clk1}
 	set_instantiation_interface_parameter_value axi_s1 associatedReset {reset1}
 	set_instantiation_interface_parameter_value axi_s1 bridgesToMaster {}
 	set_instantiation_interface_parameter_value axi_s1 combinedAcceptanceCapability {1}
-	set_instantiation_interface_parameter_value axi_s1 dataCheck {false}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureGuid {0}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureId {35}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureMajorVersion {0}
@@ -1598,11 +1565,9 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
-	set_instantiation_interface_parameter_value axi_s1 securityAttribute {false}
 	set_instantiation_interface_parameter_value axi_s1 traceSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi_s1 uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value axi_s1 userData {false}
 	set_instantiation_interface_parameter_value axi_s1 wakeupSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 writeAcceptanceCapability {1}
 	set_instantiation_interface_assignment_value axi_s1 embeddedsw.configuration.isMemoryDevice {1}
