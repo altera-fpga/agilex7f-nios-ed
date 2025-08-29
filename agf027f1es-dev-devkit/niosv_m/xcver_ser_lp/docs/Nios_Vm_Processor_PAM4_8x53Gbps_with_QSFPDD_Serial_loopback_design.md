@@ -18,7 +18,7 @@ F-Tile Transceiver loopback design on Agilex™ 7 FPGA F-Series Development Kit 
 
 ### Agilex 7 FPGA - Nios V/m Transceiver Loopback design Architecture
 
-![Block Diagram](https://github.com/altera-fpga/agilex7e-nios-ed/blob/rel/25.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
+![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
 
 #### Nios® V/m Processor
 - Microcontroller- Balanced (For interrupt driven baremetal and RTOS code)
