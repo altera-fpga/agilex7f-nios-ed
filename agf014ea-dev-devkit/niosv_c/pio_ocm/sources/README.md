@@ -15,7 +15,7 @@ The PIO core is configured for output ports only and the outputs are connected t
 - **Source**: Github
 - **Design Support**: SCTH
 - **Family**: Agilex 7
-- **Quartus Version**: 25.1.1 Pro
+- **Quartus Version**: 25.1.1
 - **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
 - **Device Part**: AGFB014R24B2E2V
 - **Design Package**: agilex7_niosv_c_pio_ocm.zip
