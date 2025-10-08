@@ -36,7 +36,7 @@ The following table contains the list of the designs on Agilex™ 7 FPGA F-Serie
 
 | No # | Design Name Prefix (Nios V core) | Design Name Suffix (Functions) | Description |
 | - | --- | ------ | ----------- |
-| 1 | Nios V/g | Nios V/g TinyML LiteRT | This design demonstrates the TinyML application using LiteRT for microcontrollers software with Nios® V/g processor<br>[Design details](agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md) |
+| 1 | Nios V/g | Nios V/g Lockstep | This design demonstrates the working of NiosV/g lockstep feature through the standard fail safe control mechanism<br>[Design details](agf014ea-dev-devkit/niosv_g/lockstep/docs/Nios_Vg_Processor_Lockstep_Design_on_Agilex_7_FPGA.md) |
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
