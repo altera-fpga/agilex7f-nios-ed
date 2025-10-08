@@ -12,13 +12,13 @@ F-Tile Transceiver loopback design on Agilex™ 7 FPGA F-Series Development Kit 
 ### Release Contents  
 
 #### Binaries
- - Prebuilt binaries are located [here](https://github.com/altera-fpga/agilex7e-nios-ed/blob/rel/25.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/ready_to_test).
+ - Prebuilt binaries are located [here](https://github.com/altera-fpga/agilex7e-nios-ed/blob/rel/25.3/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/ready_to_test).
  - The sof and elf files required to run the design can be found in "ready_to_test" folder 
  - Program the sof and download the elf file on board
 
 ### Agilex 7 FPGA - Nios V/m Transceiver Loopback design Architecture
 
-![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
+![Block Diagram](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
 
 #### Nios® V/m Processor
 - Microcontroller- Balanced (For interrupt driven baremetal and RTOS code)
@@ -74,10 +74,10 @@ Refer to [Agilex™ 7 FPGA F-Series (2 × F-Tiles) Development Kit User Guide](h
 #### Tools Download and Installation
 1. Quartus Prime Pro
 
- - Download the Quartus® Prime Pro Edition software version 25.1.1 from the FPGA Software Download Center webpage of the Intel website. Follow the on-screen instructions to complete the installation process. Choose an installation directory that is relative to the Quartus® Prime Pro Edition software installation directory.
+ - Download the Quartus® Prime Pro Edition software version 25.3 from the FPGA Software Download Center webpage of the Intel website. Follow the on-screen instructions to complete the installation process. Choose an installation directory that is relative to the Quartus® Prime Pro Edition software installation directory.
  - Set up the Quartus tools in the PATH, so they are accessible without full path.
 ```console
-export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.1.1/quartus/
+export QUARTUS_ROOTDIR=~/intelFPGA_pro/25.3/quartus/
 export PATH=$QUARTUS_ROOTDIR/bin:$QUARTUS_ROOTDIR/linux64:$QUARTUS_ROOTDIR/../qsys/bin:$PATH
 ```
 

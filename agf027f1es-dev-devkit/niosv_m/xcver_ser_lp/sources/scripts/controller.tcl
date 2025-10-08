@@ -1,11 +1,11 @@
-package require -exact qsys 24.2
+package require -exact qsys 25.3
 
 # create the system "controller"
 proc do_create_controller {} {
 	# create the system
 	create_system controller
-	set_project_property BOARD {Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES}
-	set_project_property DEVICE {AGFB027R24C2E2VR2}
+	set_project_property BOARD {Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF023FA}
+	set_project_property DEVICE {AGFD023R24C2E1VC}
 	set_project_property DEVICE_FAMILY {Agilex 7}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -415,6 +415,7 @@ proc do_create_controller {} {
 	load_component jtag_uart
 	set_component_parameter_value allowMultipleConnections {0}
 	set_component_parameter_value hubInstanceID {0}
+	set_component_parameter_value printingMethod {0}
 	set_component_parameter_value readBufferDepth {64}
 	set_component_parameter_value readIRQThreshold {8}
 	set_component_parameter_value simInputCharacterStream {}
@@ -758,10 +759,13 @@ proc do_create_controller {} {
 	save_instantiation
 	add_component niosv_m ip/controller/controller_intel_niosv_m_0.ip intel_niosv_m intel_niosv_m_0
 	load_component niosv_m
+	set_component_parameter_value enableAvalonInterface {0}
 	set_component_parameter_value enableDebug {1}
 	set_component_parameter_value enableDebugReset {0}
+	set_component_parameter_value enableECCFull {0}
 	set_component_parameter_value enableECCLite {0}
 	set_component_parameter_value hartId {0}
+	set_component_parameter_value interruptMode {0}
 	set_component_parameter_value numGpr {32}
 	set_component_parameter_value pipelineArch {1}
 	set_component_parameter_value resetOffset {0}
@@ -782,6 +786,7 @@ proc do_create_controller {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.ICACHE_LINE_SIZE_LOG2 {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.ICACHE_SIZE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.INST_ADDR_WIDTH {32}
+	set_instantiation_assignment_value embeddedsw.CMacro.INT_MODE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.MTIME_OFFSET {0x00410200}
 	set_instantiation_assignment_value embeddedsw.CMacro.NIOSV_CORE_VARIANT {1}
 	set_instantiation_assignment_value embeddedsw.CMacro.NUM_GPR {32}
@@ -791,6 +796,8 @@ proc do_create_controller {} {
 	set_instantiation_assignment_value embeddedsw.configuration.HDLSimCachesCleared {1}
 	set_instantiation_assignment_value embeddedsw.configuration.cpuArchitecture {Abbotts Lake}
 	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {0}
+	set_instantiation_assignment_value embeddedsw.configuration.fsqrtFdivDisabled {0}
+	set_instantiation_assignment_value embeddedsw.configuration.interruptMode {0}
 	set_instantiation_assignment_value embeddedsw.configuration.isTimerDevice {1}
 	set_instantiation_assignment_value embeddedsw.configuration.numGpr {32}
 	set_instantiation_assignment_value embeddedsw.configuration.resetOffset {0}
@@ -818,17 +825,25 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value platform_irq_rx irqScheme {INDIVIDUAL_REQUESTS}
 	add_instantiation_interface_port platform_irq_rx platform_irq_rx_irq irq 16 STD_LOGIC_VECTOR Input
 	add_instantiation_interface instruction_manager axi4lite OUTPUT
+	set_instantiation_interface_parameter_value instruction_manager addressCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value instruction_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {8}
+	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
+	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value instruction_manager isTranslator {false}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value instruction_manager optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
 	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {8}
+	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value instruction_manager traceSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value instruction_manager uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value instruction_manager userData {false}
 	set_instantiation_interface_parameter_value instruction_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager writeIssuingCapability {1}
 	add_instantiation_interface_port instruction_manager instruction_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -851,17 +866,25 @@ proc do_create_controller {} {
 	add_instantiation_interface_port instruction_manager instruction_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port instruction_manager instruction_manager_rready rready 1 STD_LOGIC Output
 	add_instantiation_interface data_manager axi4lite OUTPUT
+	set_instantiation_interface_parameter_value data_manager addressCheck {false}
 	set_instantiation_interface_parameter_value data_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value data_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
+	set_instantiation_interface_parameter_value data_manager dataCheck {false}
+	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value data_manager isTranslator {false}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value data_manager noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value data_manager optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value data_manager poison {false}
 	set_instantiation_interface_parameter_value data_manager readIssuingCapability {1}
+	set_instantiation_interface_parameter_value data_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value data_manager traceSignals {false}
 	set_instantiation_interface_parameter_value data_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value data_manager uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value data_manager userData {false}
 	set_instantiation_interface_parameter_value data_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value data_manager writeIssuingCapability {1}
 	add_instantiation_interface_port data_manager data_manager_awaddr awaddr 32 STD_LOGIC_VECTOR Output
@@ -1544,10 +1567,12 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value clk1 ptfSchematicName {}
 	add_instantiation_interface_port clk1 clk clk 1 STD_LOGIC Input
 	add_instantiation_interface axi_s1 axi4 INPUT
+	set_instantiation_interface_parameter_value axi_s1 addressCheck {false}
 	set_instantiation_interface_parameter_value axi_s1 associatedClock {clk1}
 	set_instantiation_interface_parameter_value axi_s1 associatedReset {reset1}
 	set_instantiation_interface_parameter_value axi_s1 bridgesToMaster {}
 	set_instantiation_interface_parameter_value axi_s1 combinedAcceptanceCapability {1}
+	set_instantiation_interface_parameter_value axi_s1 dataCheck {false}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureGuid {0}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureId {35}
 	set_instantiation_interface_parameter_value axi_s1 dfhFeatureMajorVersion {0}
@@ -1559,15 +1584,19 @@ proc do_create_controller {} {
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterId {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterName {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi_s1 isTranslator {false}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
+	set_instantiation_interface_parameter_value axi_s1 securityAttribute {false}
 	set_instantiation_interface_parameter_value axi_s1 traceSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi_s1 uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value axi_s1 userData {false}
 	set_instantiation_interface_parameter_value axi_s1 wakeupSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 writeAcceptanceCapability {1}
 	set_instantiation_interface_assignment_value axi_s1 embeddedsw.configuration.isMemoryDevice {1}
@@ -2141,18 +2170,18 @@ proc do_create_controller {} {
 	save_instantiation
 	add_component sysid_qsys_0 ip/controller/controller_sysid_qsys_0.ip altera_avalon_sysid_qsys sysid_qsys_0
 	load_component sysid_qsys_0
+	set_component_parameter_value HASH_INT {0}
+	set_component_parameter_value USE_MANUAL_ID {1}
 	set_component_parameter_value id {-87110914}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation sysid_qsys_0
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {-87110914}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {-87110914}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}
@@ -2491,6 +2520,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr baseAddress {0x00410240}
+	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/i2c_0.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2514,6 +2544,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 baseAddress {0x00410330}
+	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/internal_noise.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2537,6 +2568,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 baseAddress {0x004102e0}
+	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/irq_10us.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2560,6 +2592,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave baseAddress {0x00410348}
+	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/jtag_uart.avalon_jtag_slave qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2583,6 +2616,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 baseAddress {0x00410320}
+	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/module_input_reg.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2606,6 +2640,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 baseAddress {0x00410310}
+	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/module_output_reg.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2629,6 +2664,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent baseAddress {0x00400000}
+	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.dm_agent qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2652,6 +2688,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent baseAddress {0x00410200}
+	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/niosv_m.timer_sw_agent qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2675,6 +2712,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 baseAddress {0x20000000}
+	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/phy_reg_set.s0 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2698,6 +2736,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 baseAddress {0x0000}
+	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/prg_ram.axi_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2721,6 +2760,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 baseAddress {0x00410000}
+	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/reg_set.s0 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2744,6 +2784,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm baseAddress {0x00410280}
+	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/s10_mailbox_client_0.avmm qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2767,6 +2808,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 baseAddress {0x004102c0}
+	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/sys_clk_timer.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2790,6 +2832,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave baseAddress {0x00410340}
+	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/sysid_qsys_0.control_slave qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2813,6 +2856,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.data_manager/version.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/version.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.data_manager/version.s1 baseAddress {0x00410300}
+	set_connection_parameter_value niosv_m.data_manager/version.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.data_manager/version.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.data_manager/version.s1 domainAlias {}
 	set_connection_parameter_value niosv_m.data_manager/version.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2836,6 +2880,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent baseAddress {0x00400000}
+	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent defaultConnection {0}
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent domainAlias {}
 	set_connection_parameter_value niosv_m.instruction_manager/niosv_m.dm_agent qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -2859,6 +2904,7 @@ proc do_create_controller {} {
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 baseAddress {0x0000}
+	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 defaultConnection {0}
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 domainAlias {}
 	set_connection_parameter_value niosv_m.instruction_manager/prg_ram.axi_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

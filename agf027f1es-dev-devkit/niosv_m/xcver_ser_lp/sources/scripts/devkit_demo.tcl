@@ -1,21 +1,21 @@
-# Copyright (C) 2024  Intel Corporation. All rights reserved.
-# Your use of Intel Corporation's design tools, logic functions 
+# Copyright (C) 2025  Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and any partner logic 
 # functions, and any output files from any of the foregoing 
 # (including device programming or simulation files), and any 
 # associated documentation or information are expressly subject 
-# to the terms and conditions of the Intel Program License 
-# Subscription Agreement, the Intel Quartus Prime License Agreement,
-# the Intel FPGA IP License Agreement, or other applicable license
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, the Altera Quartus Prime License Agreement,
+# the Altera IP License Agreement, or other applicable license
 # agreement, including, without limitation, that your use is for
 # the sole purpose of programming logic devices manufactured by
-# Intel and sold by Intel or its authorized distributors.  Please
-# refer to the Intel FPGA Software License Subscription Agreements 
+# Altera and sold by Altera or its authorized distributors.  Please
+# refer to the Altera Software License Subscription Agreements 
 # on the Quartus Prime software download page.
 
 # Quartus Prime: Generate Tcl File for Project
 # File: devkit_demo.tcl
-# Generated on: Tue Apr  9 03:05:23 2024
+# Generated on: Thu Aug 21 01:40:23 2025
 
 # Load Quartus Prime Tcl Project package
 package require ::quartus::project
@@ -44,10 +44,10 @@ if {$make_assignments} {
 	set_global_assignment -name TOP_LEVEL_ENTITY devkit_demo
 	set_global_assignment -name ORIGINAL_QUARTUS_VERSION 4.2
 	set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:16:34  DECEMBER 24, 2004"
-	set_global_assignment -name LAST_QUARTUS_VERSION "24.3.0 Pro Edition"
+	set_global_assignment -name LAST_QUARTUS_VERSION "25.3.0 Pro Edition"
 	set_global_assignment -name SAVE_DISK_SPACE OFF
-	set_global_assignment -name BOARD "Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES"
-	set_global_assignment -name DEVICE AGFB027R24C2E2VR2
+	set_global_assignment -name BOARD "Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF023FA"
+	set_global_assignment -name DEVICE AGFD023R24C2E1VC
 	set_global_assignment -name FAMILY "Agilex 7"
 	set_global_assignment -name ENABLE_DEVICE_WIDE_RESET OFF
 	set_global_assignment -name AUTO_ENABLE_SMART_COMPILE ON
@@ -60,7 +60,7 @@ if {$make_assignments} {
 	set_global_assignment -name USE_PWRMGT_SCL SDM_IO0
 	set_global_assignment -name USE_PWRMGT_SDA SDM_IO11
 	set_global_assignment -name PWRMGT_BUS_SPEED_MODE "100 KHZ"
-	set_global_assignment -name PWRMGT_SLAVE_DEVICE_TYPE LTC3888
+	set_global_assignment -name PWRMGT_SLAVE_DEVICE_TYPE "LTC3888-1"
 	set_global_assignment -name PWRMGT_SLAVE_DEVICE0_ADDRESS 55
 	set_global_assignment -name PWRMGT_SLAVE_DEVICE1_ADDRESS 00
 	set_global_assignment -name PWRMGT_SLAVE_DEVICE2_ADDRESS 00
@@ -109,6 +109,7 @@ if {$make_assignments} {
 	set_global_assignment -name SEARCH_PATH wab_america_west
 	set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "AVST X16"
 	set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
+	set_global_assignment -name MESSAGE_DISABLE 12677
 	set_global_assignment -name TCL_SCRIPT_FILE ./ttk_helper_ftile.tcl
 	set_global_assignment -name VHDL_FILE core_prbs/txrx_pcs_64b66b_fgt.vhd
 	set_global_assignment -name VHDL_FILE prbsgenerate_10bit.vhd
@@ -160,7 +161,6 @@ if {$make_assignments} {
 	set_global_assignment -name SDC_FILE timing.sdc
 	set_global_assignment -name IP_FILE ip/controller/controller_intel_niosv_m_0.ip
 	set_global_assignment -name IP_FILE ip/controller/controller_intel_onchip_memory_0.ip
-	set_global_assignment -name MESSAGE_DISABLE 12677
 	set_global_assignment -name IP_FILE ip/controller/controller_sysid_qsys_0.ip
 	# This order dependent setting should appear after all other QIP_FILE and IP_FILE settings
 	set_global_assignment -name QIP_FILE support_logic/devkit_demo_auto_tiles.qip -comment "This order dependent setting should appear after all other QIP_FILE and IP_FILE settings" -tag quartus_tlg
@@ -230,37 +230,30 @@ if {$make_assignments} {
 	set_instance_assignment -name IO_STANDARD "1.2 V" -to qsfpdd_fpga_i2c_sda -entity devkit_demo
 	set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to qsfpdd_txp -entity devkit_demo
 	set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to qsfpdd_rxp -entity devkit_demo
-
-set_location_assignment PIN_FGTL12C_TX_Q1_CH0N -to qsfpdd_txn[3]
-set_location_assignment PIN_FGTL12C_TX_Q1_CH1N -to qsfpdd_txn[2]
-set_location_assignment PIN_FGTL12C_TX_Q1_CH2N -to qsfpdd_txn[1]
-set_location_assignment PIN_FGTL12C_TX_Q1_CH3N -to qsfpdd_txn[0]
-set_location_assignment PIN_FGTL12C_TX_Q2_CH0N -to qsfpdd_txn[7]
-set_location_assignment PIN_FGTL12C_TX_Q2_CH1N -to qsfpdd_txn[6]
-set_location_assignment PIN_FGTL12C_TX_Q3_CH2N -to qsfpdd_txn[5]
-set_location_assignment PIN_FGTL12C_TX_Q3_CH3N -to qsfpdd_txn[4]
-
-
-set_location_assignment PIN_FGTL12C_RX_Q1_CH0N -to qsfpdd_rxn[3]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH1N -to qsfpdd_rxn[2]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH2N -to qsfpdd_rxn[1]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH3N -to qsfpdd_rxn[0]
-set_location_assignment PIN_FGTL12C_RX_Q2_CH0N -to qsfpdd_rxn[7]
-set_location_assignment PIN_FGTL12C_RX_Q2_CH1N -to qsfpdd_rxn[6]
-set_location_assignment PIN_FGTL12C_RX_Q3_CH2N -to qsfpdd_rxn[5]
-set_location_assignment PIN_FGTL12C_RX_Q3_CH3N -to qsfpdd_rxn[4]
-
-set_location_assignment PIN_FGTL12C_RX_Q1_CH0P -to qsfpdd_rxp[3]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH1P -to qsfpdd_rxp[2]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH2P -to qsfpdd_rxp[1]
-set_location_assignment PIN_FGTL12C_RX_Q1_CH3P -to qsfpdd_rxp[0]
-set_location_assignment PIN_FGTL12C_RX_Q2_CH0P -to qsfpdd_rxp[7]
-set_location_assignment PIN_FGTL12C_RX_Q2_CH1P -to qsfpdd_rxp[6]
-set_location_assignment PIN_FGTL12C_RX_Q3_CH2P -to qsfpdd_rxp[5]
-set_location_assignment PIN_FGTL12C_RX_Q3_CH3P -to qsfpdd_rxp[4]
-
-set_global_assignment -name QIP_FILE support_logic/devkit_demo_auto_tiles.qip -comment "This order dependent setting should appear after all other QIP_FILE and IP_FILE settings" -tag quartus_tlg
-set_global_assignment -name SPD_FILE support_logic/devkit_demo_auto_tiles.spd -tag quartus_tlg
+	set_location_assignment PIN_FGTL12C_TX_Q1_CH0N -to qsfpdd_txn[3]
+	set_location_assignment PIN_FGTL12C_TX_Q1_CH1N -to qsfpdd_txn[2]
+	set_location_assignment PIN_FGTL12C_TX_Q1_CH2N -to qsfpdd_txn[1]
+	set_location_assignment PIN_FGTL12C_TX_Q1_CH3N -to qsfpdd_txn[0]
+	set_location_assignment PIN_FGTL12C_TX_Q2_CH0N -to qsfpdd_txn[7]
+	set_location_assignment PIN_FGTL12C_TX_Q2_CH1N -to qsfpdd_txn[6]
+	set_location_assignment PIN_FGTL12C_TX_Q3_CH2N -to qsfpdd_txn[5]
+	set_location_assignment PIN_FGTL12C_TX_Q3_CH3N -to qsfpdd_txn[4]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH0N -to qsfpdd_rxn[3]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH1N -to qsfpdd_rxn[2]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH2N -to qsfpdd_rxn[1]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH3N -to qsfpdd_rxn[0]
+	set_location_assignment PIN_FGTL12C_RX_Q2_CH0N -to qsfpdd_rxn[7]
+	set_location_assignment PIN_FGTL12C_RX_Q2_CH1N -to qsfpdd_rxn[6]
+	set_location_assignment PIN_FGTL12C_RX_Q3_CH2N -to qsfpdd_rxn[5]
+	set_location_assignment PIN_FGTL12C_RX_Q3_CH3N -to qsfpdd_rxn[4]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH0P -to qsfpdd_rxp[3]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH1P -to qsfpdd_rxp[2]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH2P -to qsfpdd_rxp[1]
+	set_location_assignment PIN_FGTL12C_RX_Q1_CH3P -to qsfpdd_rxp[0]
+	set_location_assignment PIN_FGTL12C_RX_Q2_CH0P -to qsfpdd_rxp[7]
+	set_location_assignment PIN_FGTL12C_RX_Q2_CH1P -to qsfpdd_rxp[6]
+	set_location_assignment PIN_FGTL12C_RX_Q3_CH2P -to qsfpdd_rxp[5]
+	set_location_assignment PIN_FGTL12C_RX_Q3_CH3P -to qsfpdd_rxp[4]
 
 	# Commit assignments
 	export_assignments
