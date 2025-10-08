@@ -6,7 +6,7 @@ Nios® V/g Processor-based Lockstep example design on the Agilex® 7 FPGA.
 
 This design demonstrates the working of NiosV/g lockstep feature through the standard fail safe control mechanism using by injecting root faults and reading alarms with Nios® V/m as the system supervisor on Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA. 
 
-![image](https://github.com/intel-innersource/applications.fpga.niosv-example-designs.niosv-example-designs/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/block_diagram.png)
 
 ## Project Details
 
@@ -25,7 +25,7 @@ This design demonstrates the working of NiosV/g lockstep feature through the sta
 ## Documentations
 
 - **Title**: Design Document
-**URL**: https://github.com/intel-innersource/applications.fpga.niosv-example-designs.niosv-example-designs/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/block_diagram.png
+**URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/block_diagram.png
 
 ### Prerequisites
 
