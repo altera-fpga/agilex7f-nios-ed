@@ -26,7 +26,7 @@ This design demonstrates the working of NiosV/g lockstep feature through the sta
 
 - **Title**: Design Document
 
-**URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/block_diagram.png
+**URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf014ea-dev-devkit/niosv_g/lockstep/img/Nios_Vg_Processor_Lockstep_Design_on_Agilex_7_FPGA.md
 
 ### Prerequisites
 
