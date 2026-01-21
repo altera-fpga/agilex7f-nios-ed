@@ -24,8 +24,6 @@ There are three variants of the NiosV core:
     
     b. Nios V/g core - General-Purpose Processor- High Performance (For interrupt driven baremetal and RTOS code)
 
-    c. Nios V/c core - Compact Microcontroller- Smallest (For non-interrupt driven baremetal code)
-
 
 # 1. agf014ea-dev-devkit 
 Example Designs using Nios V as the core based on Agilex™ 7 FPGA F-Series Development Kit (P-Tile and E-Tile)
@@ -37,10 +35,11 @@ The following table contains the list of the designs on Agilex™ 7 FPGA F-Serie
 | No # | Design Name Prefix (Nios V core) | Design Name Suffix (Functions) | Description |
 | - | --- | ------ | ----------- |
 | 1 | Nios V/g | Nios V/g Lockstep | This design demonstrates the working of NiosV/g lockstep feature through the standard fail safe control mechanism<br>[Design details](agf014ea-dev-devkit/niosv_g/lockstep/docs/Nios_Vg_Processor_Lockstep_Design_on_Agilex_7_FPGA.md) |
+| 2 | Nios V/g | Nios V/g TinyML LiteRT | This design demonstrates the TinyML application using LiteRT for microcontrollers software with Nios® V/g processor<br>[Design details](agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md) |
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# 2. agf014ea-dev-devkit 
+# 2. agf027f1es-dev-devkit
 Example Designs using Nios V as the core based on  Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile)
 
 Development kit product page - https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agf027-and-agf023.html 

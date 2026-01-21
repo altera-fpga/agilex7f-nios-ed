@@ -6,26 +6,26 @@ F-Tile Transceiver loopback design on Agilex™ 7 FPGA F-Series Development Kit 
 
 This design demonstrates the serial loopback via QSFPDD on Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile)
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
+![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
 
 ## Project Details
 
 - **Title**: Nios® V/m Processor Transceiver Loopback design
 - **Source**: Github
-- **Design Support**: SCTH
+- **Design Support**: CTH
 - **Family**: Agilex 7
-- **Quartus Version**: 25.3.0
+- **Quartus Version**: 25.3.1
 - **Development Kit**: Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES
 - **Device Part**: AGFD023R24C2E1VC
 - **Design Package**: agilex7_xcver_loopback.zip
 - **Category**: Transceiver
-- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp
-- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.3.0-v1.0/agilex7_xcver_loopback.zip
+- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp
+- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.3.1-v1.0/agilex7_xcver_loopback.zip
 
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.0/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/docs
+* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/docs
 
 # Getting Started
 
