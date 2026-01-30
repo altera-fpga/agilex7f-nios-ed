@@ -25,7 +25,6 @@ This design demonstrates the working of NiosV/g lockstep feature through the sta
 ## Documentations
 
 - **Title**: Design Document
-
 **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf014ea-dev-devkit/niosv_g/lockstep/docs/Nios_Vg_Processor_Lockstep_Design_on_Agilex_7_FPGA.md
 
 ### Prerequisites
@@ -159,17 +158,17 @@ c. Creating the bsp, build software sources and download elf
 - Niosv/m application
 ```console
 niosv-bsp -c --quartus-project=hw/top.qpf --qsys=hw/qsys_top.qsys --type=hal sw/bsp_lockstep/settings.bsp -i=intel_niosv_m_0
-niosv-app --bsp-dir=sw/bsp_lockstep --app-dir=sw/app_niosv_m_supervisor --srcs=sw/app_niosv_m_supervisor/lockstep.c
-cmake -S ./sw/app_niosv_m_supervisor -B sw/app_niosv_m_supervisor/build
-make -C sw/app_niosv_m_supervisor/build
+niosv-app --bsp-dir=sw/bsp_lockstep --app-dir=sw/app_lockstep --srcs=sw/app_lockstep/lockstep.c
+cmake -S ./sw/app_lockstep -B sw/app_lockstep/build
+make -C sw/app_lockstep/build
 ```
 
 - Niosv/g application
 ```console
 niosv-bsp -c --quartus-project=hw/top.qpf --qsys=hw/qsys_top.qsys --type=hal sw/bsp_lockstep_hello/settings.bsp -i=intel_niosv_g_0
-niosv-app --bsp-dir=sw/bsp_lockstep_hello --app-dir=sw/app_niosv_g_hello_world --srcs=sw/app_niosv_g_hello_world/hello.c
-cmake -S ./sw/app_niosv_g_hello_world -B sw/app_niosv_g_hello_world/build
-make -C sw/app_niosv_g_hello_world/build
+niosv-app --bsp-dir=sw/bsp_lockstep_hello --app-dir=sw/app_lockstep_hello --srcs=sw/app_lockstep_hello/hello.c
+cmake -S ./sw/app_lockstep_hello -B sw/app_lockstep_hello/build
+make -C sw/app_lockstep_hello/build
 ```
 
 d. Hardware Validation
@@ -183,7 +182,7 @@ jtagconfig --setparam 1 JtagClock 6M
 ```
 - Download the elf file on the board (First download the Niosv/m app and then the Niosv/g app)
 ```
-niosv-download -g sw/app_lockstep/build/app_lockstep.elf
+niosv-download -g sw/app_lockstep/build/app_lockstep.elf -c 1 -i 1
 ```
 ```
 niosv-download -g sw/app_lockstep_hello/build/app_lockstep_hello.elf -c 1 -i 0
@@ -191,4 +190,7 @@ niosv-download -g sw/app_lockstep_hello/build/app_lockstep_hello.elf -c 1 -i 0
 - Verify the output on the terminal by using the following command in the terminal:
 ``` 
 juart-terminal -d 1 -c 1 -i 1
+```
+``` 
+juart-terminal -d 1 -c 1 -i 0
 ```
