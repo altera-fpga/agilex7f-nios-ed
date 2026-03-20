@@ -1,56 +1,87 @@
-# Copyright (C) 2022 Intel Corporation
+# (C) 2001-2025 Altera Corporation. All rights reserved.
+# Your use of Altera Corporation's design tools, logic functions and other 
+# software and tools, and its AMPP partner logic functions, and any output 
+# files from any of the foregoing (including device programming or simulation 
+# files), and any associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License Subscription 
+# Agreement, Altera IP License Agreement, or other applicable 
+# license agreement, including, without limitation, that your use is for the 
+# sole purpose of programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+
+# (C) 2001-2023 Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions and other 
+# software and tools, and its AMPP partner logic functions, and any output 
+# files from any of the foregoing (including device programming or simulation 
+# files), and any associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License Subscription 
+# Agreement, Intel FPGA IP License Agreement, or other applicable 
+# license agreement, including, without limitation, that your use is for the 
+# sole purpose of programming logic devices manufactured by Intel and sold by 
+# Intel or its authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+
+
+# Copyright (C) 2001-2022 Intel Corporation 
 #
-# This software and the related documents are Intel copyrighted materials, and
+# This code and the related documents are Intel copyrighted materials, and
 # your use of them is governed by the express license under which they were
 # provided to you ("License"). Unless the License provides otherwise, you may
 # not use, modify, copy, publish, distribute, disclose or transmit this
-# software or the related documents without Intel's prior written permission.
+# code or the related documents without Intel's prior written permission
 #
-# This software and the related documents are provided as is, with no express
+# This code and the related documents are provided as is, with no express
 # or implied warranties, other than those that are expressly stated in the
 # License.
 #
-# ----------------------------------------------------------------------------
-# File: jtag.sdc
-# ----------------------------------------------------------------------------
 #
-# Search "---customize here---" for the few decisions you need to make.
+# Search "---customize here---" for the few decisions you need to make 
 #
-# By default, the most challenging timing spec is applied to work in
+# By default, the most challenging timing spec is applied to work in 
 # many JTAG chain setup situations
 
 set_time_format -unit ns -decimal_places 3
 
 # This is the main entry point called at the end of this SDC file.
 proc set_jtag_timing_constraints { } {
+    # If the timing characteristic outside of FPGA is well understood, and 
+    # there is a need to provide more slack to allow flexible placement of 
+    # JTAG logic in the FPGA core, use the timing constraints for both 
+    # timing analysis and fitter; otherwise, use the default fitter timing
+    # constraints.
+    
+    # ---customize here---
+    set use_fitter_specific_constraint 1
+    
+    if { $use_fitter_specific_constraint && [string equal quartus_fit $::TimeQuestInfo(nameofexecutable)] } {
+        # Define a different set of timing spec to influence place-and-route 
+        # result in the jtag clock domain. The slacks outside of FPGA are 
+        # maximized.
+        
+        set_default_quartus_fit_timing_directive
+    }  else {
+        # Define a set of timing constraints that describe the JTAG paths 
+        # for TimeQuest to analyze. TimeQuest timing reports show whether 
+        # the JTAG logic in the FPGA core will operates in this setup.
 
-    set num_tck_port [get_collection_size [get_ports -nowarn {altera_reserved_tck}]]
-
-    if { $num_tck_port > 0 } {
-        # Define a set of timing constraints that describe the JTAG paths
-        # to analyze. TimeQuest timing reports show whether the JTAG logic
-        # in the FPGA core will operate with this setup.
-        set_jtag_timing_spec
-
-        set_a10_false_path_constraint
-        set_s10_false_path_constraint
+        set_jtag_timing_spec_for_timing_analysis
     }
 }
 
-proc set_s10_false_path_constraint { } {
-    if {$::TimeQuestInfo(family) == "Stratix 10"} {
-        set_false_path -from "*|atom_inst|atom~soc_sdm/padsig_io1.reg"
-        set_false_path -from "*|atom_inst|atom~soc_sdm/padsig_io1.reg__nff"
-    }
+proc set_default_quartus_fit_timing_directive { } {
+    # A10 supports max 33.3Mhz clock
+    set jtag_33Mhz_t_period 30
+    
+    create_clock -name {altera_reserved_tck} -period $jtag_33Mhz_t_period [get_ports {altera_reserved_tck}] 
+    set_clock_groups -asynchronous -group {altera_reserved_tck} 
+    # Force fitter to place register driving TDO pin to be as close to 
+    # the JTAG controller as possible to maximize the slack outside of FPGA.
+    set_max_delay -to [get_ports { altera_reserved_tdo } ] 0 
 }
 
-proc set_a10_false_path_constraint { } {
-    if {$::TimeQuestInfo(family) == "Arria 10"} {
-        set_false_path -from "*|atom_inst|atom~jtag_reg__nff"
-    }
-}
-
-proc set_jtag_timing_spec { } {
+proc set_jtag_timing_spec_for_timing_analysis { } {
     derive_clock_uncertainty
 
     # There are few possible JTAG chain configurations:
@@ -58,44 +89,44 @@ proc set_jtag_timing_spec { } {
     # b. This device is the first one in the JTAG chain
     # c. This device is in the middle of the JTAG chain
     # d. This device is the last one in the JTAG chain
-
+    
     # No matter where the device is in the chain. The tck and tms are driven
     # directly from JTAG hardware.
     set_tck_timing_spec
     set_tms_timing_spec
 
-    # Depending on where the device is located along the chain, tdi can be
-    # either driven by blaster hw (a. b.) or driven by another device in the
+    # Depending on where the device is located along the chain, tdi can be 
+    # either driven by blaster hw (a. b.) or driven by another device in the 
     # chain(c. d.)
     # ---customize here---
     set tdi_is_driven_by_blaster 1
-
+    
     if { $tdi_is_driven_by_blaster } {
         set_tdi_timing_spec_when_driven_by_blaster
     } else {
         set_tdi_timing_spec_when_driven_by_device
     }
-
-    # Depending on where the device is located along the chain, tdo can
+    
+    # Depending on where the device is located along the chain, tdo can  
     # drive either blaster hw (a. d.) or another device in the chain (b. c.)
     # ---customize here---
     set tdo_drive_blaster 1
-
+    
     if { $tdo_drive_blaster } {
         set_tdo_timing_spec_when_drive_blaster
     } else {
         set_tdo_timing_spec_when_drive_device
     }
-
+    
     set_optional_ntrst_timing_spec
-
-    # Cut a few timing paths that are not related to JTAG logic in
+    
+    # Cut a few timing paths that are not related to JTAG logic in 
     # the FPGA core, such as security mode.
     set_false_path -from [get_ports {altera_reserved_tdi}] -to [get_ports {altera_reserved_tdo}]
     if { [get_collection_size [get_registers -nowarn *~jtag_reg]] > 0 } {
         set_false_path -from [get_registers *~jtag_reg] -to [get_ports {altera_reserved_tdo}]
     }
-
+    
 }
 
 proc set_tck_timing_spec { } {
@@ -108,7 +139,7 @@ proc set_tck_timing_spec { } {
 
     # ---customize here---
     set tck_t_period $ub2_safe_t_period
-
+    
     create_clock -name {altera_reserved_tck} -period $tck_t_period  [get_ports {altera_reserved_tck}]
     set_clock_groups -asynchronous -group {altera_reserved_tck}
 }
@@ -116,9 +147,9 @@ proc set_tck_timing_spec { } {
 proc get_tck_delay_max { } {
     set tck_blaster_tco_max 14.603
     set tck_cable_max 11.627
-
-    # tck delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tck delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tck_header_trace_max 0.5
@@ -129,9 +160,9 @@ proc get_tck_delay_max { } {
 proc get_tck_delay_min { } {
     set tck_blaster_tco_min 14.603
     set tck_cable_min 10.00
-
-    # tck delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tck delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tck_header_trace_min 0.1
@@ -145,17 +176,17 @@ proc set_tms_timing_spec { } {
 
     set tms_cable_max 11.627
     set tms_cable_min 10.0
-
-    # tms delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tms delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tms_header_trace_max 0.5
     set tms_header_trace_min 0.1
-
+    
     set tms_in_max [expr $tms_cable_max + $tms_header_trace_max + $tms_blaster_tco_max - [get_tck_delay_min]]
     set tms_in_min [expr $tms_cable_min + $tms_header_trace_min + $tms_blaster_tco_min - [get_tck_delay_max]]
-
+    
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -max $tms_in_max [get_ports {altera_reserved_tms}]
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -min $tms_in_min [get_ports {altera_reserved_tms}]
 }
@@ -163,12 +194,12 @@ proc set_tms_timing_spec { } {
 proc set_tdi_timing_spec_when_driven_by_blaster { } {
     set tdi_blaster_tco_max 8.551
     set tdi_blaster_tco_min 8.551
-
+    
     set tdi_cable_max 11.627
     set tdi_cable_min 10.0
-
-    # tms delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tms delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tdi_header_trace_max 0.5
@@ -176,7 +207,7 @@ proc set_tdi_timing_spec_when_driven_by_blaster { } {
 
     set tdi_in_max [expr $tdi_cable_max + $tdi_header_trace_max + $tdi_blaster_tco_max - [get_tck_delay_min]]
     set tdi_in_min [expr $tdi_cable_min + $tdi_header_trace_min + $tdi_blaster_tco_min - [get_tck_delay_max]]
-
+    
     #TDI launches at the falling edge of TCK per standard
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -max $tdi_in_max [get_ports {altera_reserved_tdi}]
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -min $tdi_in_min [get_ports {altera_reserved_tdi}]
@@ -187,9 +218,9 @@ proc set_tdi_timing_spec_when_driven_by_device { } {
     # ---customize here---
     set previous_device_tdo_tco_max 10.0
     set previous_device_tdo_tco_min 10.0
-
-    # tdi delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tdi delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tdi_trace_max 0.5
@@ -197,7 +228,7 @@ proc set_tdi_timing_spec_when_driven_by_device { } {
 
     set tdi_in_max [expr $previous_device_tdo_tco_max + $tdi_trace_max - [get_tck_delay_min]]
     set tdi_in_min [expr $previous_device_tdo_tco_min + $tdi_trace_min - [get_tck_delay_max]]
-
+    
     #TDI launches at the falling edge of TCK per standard
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -max $tdi_in_max [get_ports {altera_reserved_tdi}]
     set_input_delay -add_delay -clock_fall -clock altera_reserved_tck -min $tdi_in_min [get_ports {altera_reserved_tdi}]
@@ -206,12 +237,12 @@ proc set_tdi_timing_spec_when_driven_by_device { } {
 proc set_tdo_timing_spec_when_drive_blaster { } {
     set tdo_blaster_tsu 5.831
     set tdo_blaster_th -1.651
-
+    
     set tdo_cable_max 11.627
     set tdo_cable_min 10.0
-
-    # tdi delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tdi delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tdo_header_trace_max 0.5
@@ -219,9 +250,9 @@ proc set_tdo_timing_spec_when_drive_blaster { } {
 
     set tdo_out_max [expr $tdo_cable_max + $tdo_header_trace_max + $tdo_blaster_tsu + [get_tck_delay_max]]
     set tdo_out_min [expr $tdo_cable_min + $tdo_header_trace_min - $tdo_blaster_th + [get_tck_delay_min]]
-
-    #TDO does not latch inside the USB Blaster II at the rising edge of TCK,
-    # it actually is latched one half cycle later in packed mode
+    
+    #TDO does not latch inside the USB Blaster II at the rising edge of TCK, 
+    # it actually is latched one half cycle later in packed mode 
     # (equivalent to 1 JTAG fall-to-fall cycles)
     set_output_delay -add_delay -clock_fall -clock altera_reserved_tck -max $tdo_out_max [get_ports {altera_reserved_tdo}]
     set_output_delay -add_delay -clock_fall -clock altera_reserved_tck -min $tdo_out_min [get_ports {altera_reserved_tdo}]
@@ -232,9 +263,9 @@ proc set_tdo_timing_spec_when_drive_device { } {
     # ---customize here---
     set next_device_tdi_tco_max 10.0
     set next_device_tdi_tco_min 10.0
-
-    # tdi delay on the PCB depends on the trace length from JTAG 10-pin
-    # header to FPGA on board. In general on the PCB, the signal travels
+    
+    # tdi delay on the PCB depends on the trace length from JTAG 10-pin 
+    # header to FPGA on board. In general on the PCB, the signal travels 
     # at the speed of ~160 ps/inch (1000 mils = 1 inch).
     # ---customize here---
     set tdo_trace_max 0.5
@@ -257,4 +288,3 @@ proc set_optional_ntrst_timing_spec { } {
 }
 
 set_jtag_timing_constraints
-
