@@ -6,7 +6,7 @@ Nios® V/g Processor-based TinyML LiteRT example design on the Agilex® 7 FPGA.
 
 This design demonstrates the TinyML application using LiteRT for microcontrollers software with Nios® V/g processor in the Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA. 
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
+![image](https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png)
 
 ## Project Details
 
@@ -14,24 +14,24 @@ This design demonstrates the TinyML application using LiteRT for microcontroller
 * **Source**: Github
 * **Design Support**: CTH
 * **Family**: Agilex 7
-* **Quartus Version**: 25.3.1
+* **Quartus Version**: 26.1.1
 * **Development Kit**: Agilex® 7 FPGA F-Series Development Kit P-Tile and E-Tile DK-DEV-AGF014EA
 * **Device Part**: AGFB014R24B2E2V
 * **Design Package**: agilex7_niosv_g_tinyml_liteRT.zip
-* **Category**: AI
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT
-* **downloadURL**:https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.3.1-v1.0/agilex7_niosv_g_tinyml_liteRT.zip
+* **Category**: Machine Learning
+* **URL**: https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT
+* **downloadURL**:https://github.com/altera-fpga/agilex7-ed-niosv/releases/download/26.1.1/agilex7_niosv_g_tinyml_liteRT.zip
 
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md
+* **URL**: https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf014ea-dev-devkit/niosv_g/tinyml_liteRT/img/block_diagram.png
 
 # Getting Started
 
 Vendor: Altera
 
-Devkit Product Page: www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/f-series/dev-agf014.html
+Devkit Product Page: https://www.altera.com/products/devkit/po-3202/agilex-7-fpga-f-series-development-kit-p-tile-and-e-tile
 
 1. Directory structure
 2. Using existing files (sof and elf) to run on hardware

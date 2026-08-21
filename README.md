@@ -28,13 +28,13 @@ There are three variants of the NiosV core:
 # 1. agf014ea-dev-devkit 
 Example Designs using Nios V as the core based on Agilex™ 7 FPGA F-Series Development Kit (P-Tile and E-Tile)
 
-Development kit product page- https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agf014.html
+Development kit product page- https://www.altera.com/products/devkit/po-3202/agilex-7-fpga-f-series-development-kit-p-tile-and-e-tile.html
 
 The following table contains the list of the designs on Agilex™ 7 FPGA F-Series Development Kit (P-Tile and E-Tile)
 
 | No # | Design Name Prefix (Nios V core) | Design Name Suffix (Functions) | Description |
 | - | --- | ------ | ----------- |
-| 1 | Nios V/g | Nios V/g Lockstep | This design demonstrates the working of NiosV/g lockstep feature through the standard fail safe control mechanism<br>[Design details](agf014ea-dev-devkit/niosv_g/lockstep/docs/Nios_Vg_Processor_Lockstep_Design_on_Agilex_7_FPGA.md) |
+| 1 | Nios V/g | Nios V/g Soft-SoC System Example Design | This design demonstrates the Soft-SoC System Example Design that showcases the connectivity to multiple peripherals with Nios® V/g processor as the core<br>[Design details](agf014ea-dev-devkit/niosv_g/niosv_g_soft_soc_system_example_design/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md ) |
 | 2 | Nios V/g | Nios V/g TinyML LiteRT | This design demonstrates the TinyML application using LiteRT for microcontrollers software with Nios® V/g processor<br>[Design details](agf014ea-dev-devkit/niosv_g/tinyml_liteRT/docs/Nios_Vg_Processor_TinyML_Design_on_Agilex_7_FPGA.md) |
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ The following table contains the list of the designs on Agilex™ 7 FPGA F-Serie
 # 2. agf027f1es-dev-devkit
 Example Designs using Nios V as the core based on  Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile)
 
-Development kit product page - https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agf027-and-agf023.html 
+Development kit product page - https://www.altera.com/products/devkit/po-3004/agilex-7-fpga-f-series-development-kit-2x-f-tile-agf023.html
 
 The following table contains the list of the designs on Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile)
 

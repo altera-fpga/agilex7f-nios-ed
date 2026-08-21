@@ -6,31 +6,31 @@ F-Tile Transceiver loopback design on Agilex™ 7 FPGA F-Series Development Kit 
 
 This design demonstrates the serial loopback via QSFPDD on Agilex™ 7 FPGA F-Series Development Kit (2xF-Tile)
 
-![image](https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
+![image](https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/img/niosv_xcver.png)
 
 ## Project Details
 
 - **Title**: Nios® V/m Processor Transceiver Loopback design
 - **Source**: Github
-- **Design Support**: CTH
+- **Design Support**: SCTH
 - **Family**: Agilex 7
-- **Quartus Version**: 25.3.1
+- **Quartus Version**: 26.1.1
 - **Development Kit**: Agilex 7 FPGA F-Series Development Kit 2xF-Tile DK-DEV-AGF027F1ES
 - **Device Part**: AGFD023R24C2E1VC
 - **Design Package**: agilex7_xcver_loopback.zip
 - **Category**: Transceiver
-- **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp
-- **download URL**: https://github.com/altera-fpga/agilex7f-nios-ed/releases/download/25.3.1-v1.0/agilex7_xcver_loopback.zip
+- **URL**: https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp
+- **download URL**: https://github.com/altera-fpga/agilex7-ed-niosv/releases/download/26.1.1/agilex7_xcver_loopback.zip
 
 ## Documentation
 
 * **Title**: Design Document
-* **URL**: https://github.com/altera-fpga/agilex7f-nios-ed/blob/rel/25.3.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/docs
+* **URL**: https://github.com/altera-fpga/agilex7-ed-niosv/blob/rel/26.1.1/agf027f1es-dev-devkit/niosv_m/xcver_ser_lp/docs
 
 # Getting Started
 
 Vendor: Altera
-Devkit Product Page: https://www.intel.com/content/www/us/en/products/details/fpga/development-kits/agilex/agf027-and-agf023.html
+Devkit Product Page: https://www.altera.com/products/devkit/po-3004/agilex-7-fpga-f-series-development-kit-2x-f-tile-agf023
 
 1. Directory structure
 2. Using existing files (sof and elf) to run on hardware
